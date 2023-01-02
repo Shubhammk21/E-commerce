@@ -12,11 +12,11 @@ public interface CustomerService {
 
     public Customers signUpCustomer(SignUpDTO sign) throws CustomerException;
 
-//    public Customers updateCustomer(Customers cust,String key) throws CustomerException;
-//
-//    public Customers removeCustomer(Customers cust) throws CustomerException;
-//
-//    public Customers viewCustomer(String Id) throws CustomerException, LogInException;
-//
-//    public List<Customers> viewAllCustomers(String key) throws CustomerException,LogInException;
+    public Customers updateCustomer(Customers cust,String key) throws CustomerException;
+
+    public Customers removeCustomer(Customers cust) throws CustomerException;
+
+    public Customers viewCustomer(String Id) throws CustomerException, LogInException;
+
+    public List<Customers> viewAllCustomers(String key) throws CustomerException,LogInException;
 }
