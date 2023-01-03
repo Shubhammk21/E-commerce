@@ -1,5 +1,6 @@
 package com.ECommerce.Controllers;
 
+import com.ECommerce.DTO.LogInDTO;
 import com.ECommerce.DTO.SignUpDTO;
 import com.ECommerce.Exception.CustomerException;
 import com.ECommerce.Modules.Customers;
@@ -7,9 +8,9 @@ import com.ECommerce.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 public class CustomerController {
@@ -23,4 +24,16 @@ public class CustomerController {
 
         return new ResponseEntity<Customers>(c1, HttpStatus.CREATED);
     }
+    @PutMapping("/customer")
+    public ResponseEntity<Customers> updateCustomer(@Valid @RequestBody Customers customer, @RequestParam(required = false) String key) throws CustomerException{
+        Customers updatedCustomer= cs.updateCustomer(customer,key);
+
+        return new ResponseEntity<Customers>(updatedCustomer,HttpStatus.OK);
+    }
+    @DeleteMapping("/DeleteCustomer")
+    public ResponseEntity<Customers> removeCustomer(LogInDTO login) throws CustomerException{
+        Customers customer= cs.removeCustomer(login);
+        return new ResponseEntity<Customers>(customer,HttpStatus.OK);
+    }
+
 }

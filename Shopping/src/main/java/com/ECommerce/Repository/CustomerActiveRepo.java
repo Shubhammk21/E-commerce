@@ -10,6 +10,8 @@ import java.util.Optional;
 @Repository
 public interface CustomerActiveRepo extends JpaRepository<CustomerActive,String> {
 
+    public Optional<CustomerActive> findByUuId(String key);
 
+    public Optional<CustomerActive> findByUserId(String key);
 
 }

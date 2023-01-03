@@ -14,7 +14,7 @@ public interface CustomerService {
 
     public Customers updateCustomer(Customers cust,String key) throws CustomerException;
 
-    public Customers removeCustomer(Customers cust) throws CustomerException;
+    public Customers removeCustomer(LogInDTO login) throws CustomerException;
 
     public Customers viewCustomer(String Id) throws CustomerException, LogInException;
 

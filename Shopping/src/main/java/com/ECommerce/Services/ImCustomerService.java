@@ -3,6 +3,7 @@ package com.ECommerce.Services;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import com.ECommerce.DTO.LogInDTO;
 import com.ECommerce.Modules.CustomerActive;
 import com.ECommerce.Modules.LogInHistory;
 import net.bytebuddy.utility.RandomString;
@@ -15,11 +16,6 @@ import com.ECommerce.Exception.LogInException;
 import com.ECommerce.Modules.Customers;
 import com.ECommerce.Repository.CustomerActiveRepo;
 import com.ECommerce.Repository.CustomerRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.validation.constraints.Email;
-import javax.xml.stream.Location;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -75,13 +71,42 @@ public class ImCustomerService implements CustomerService{
         }
     }
     @Override
-    public Customers updateCustomer(Customers cust, String key) throws CustomerException {
-        return null;
+    public Customers updateCustomer(Customers customer, String key) throws CustomerException {
+
+        Optional<CustomerActive> u1= cr.findByUuId(key);
+        Optional<Customers> c1= cd.findByCustomerId(u1.get().getUserId());
+
+        if(u1.isEmpty()) {
+            throw new CustomerException("♣█☻ Invalid Entry ☻█♣");
+        }
+        return cd.save(customer);
+
     }
 
     @Override
-    public Customers removeCustomer(Customers cust) throws CustomerException {
-        return null;
+    public Customers removeCustomer(LogInDTO login) throws CustomerException {
+        Optional<Customers> customerWithEmail= cd.findByEmail(login.getUsername());
+        Optional<Customers> customerWithPhone= cd.findByMobileNumber(login.getUsername());
+
+        if(customerWithPhone.isEmpty() && customerWithEmail.isEmpty()){
+            throw new CustomerException("Username is invalid");
+        }
+        else if (customerWithPhone.isPresent()){
+            if (login.getPassword().equals(customerWithPhone.get().getPassword())){
+                cd.delete(customerWithPhone.get());
+                return customerWithPhone.get();
+            }else {
+                throw new CustomerException("Incorrect Password");
+            }
+        }
+        else {
+            if (!login.getPassword().equals(customerWithEmail.get().getPassword())){
+                throw new CustomerException("Incorrect Password");
+            }else {
+                cd.delete(customerWithPhone.get());
+                return customerWithPhone.get();
+            }
+        }
     }
 
     @Override
