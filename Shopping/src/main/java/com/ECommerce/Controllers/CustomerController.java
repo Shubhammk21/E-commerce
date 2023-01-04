@@ -5,6 +5,7 @@ import com.ECommerce.DTO.SignUpDTO;
 import com.ECommerce.Exception.CustomerException;
 import com.ECommerce.Exception.LogInException;
 import com.ECommerce.Modules.Customers;
+import com.ECommerce.Modules.LogInHistory;
 import com.ECommerce.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,6 +43,11 @@ public class CustomerController {
         Customers customer= cs.viewCustomer(Id);
 
         return new ResponseEntity<Customers>(customer,HttpStatus.OK);
+    }
+    @GetMapping("/customer/logInHistories")
+    public ResponseEntity<List<LogInHistory>> viewLogInHistory(@RequestParam(required = false) String Id) throws CustomerException{
+        List<LogInHistory> logInHistories= cs.viewLogInHistory(Id);
+        return new ResponseEntity<List<LogInHistory>>(logInHistories,HttpStatus.ACCEPTED);
     }
 
 //8888888888888888888888888888888888888888888888888888888 Admin 8888888888888888888888888888888888888888888888888888888888888888888888888\\
