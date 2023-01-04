@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 import com.ECommerce.DTO.LogInDTO;
+import com.ECommerce.Modules.Admin;
 import com.ECommerce.Modules.CustomerActive;
 import com.ECommerce.Modules.LogInHistory;
 import net.bytebuddy.utility.RandomString;
@@ -74,17 +75,25 @@ public class ImCustomerService implements CustomerService{
     public Customers updateCustomer(Customers customer, String key) throws CustomerException {
 
         Optional<CustomerActive> u1= cr.findByUuId(key);
-        Optional<Customers> c1= cd.findByCustomerId(u1.get().getUserId());
 
         if(u1.isEmpty()) {
             throw new CustomerException("♣█☻ Invalid Entry ☻█♣");
+        }else {
+            Optional<Customers> c1= cd.findByCustomerId(u1.get().getUserId());
+            if(c1.isEmpty()){
+                throw new CustomerException("♣█☻ Invalid Entry please login ☻█♣");
+            }else {
+                customer.setCustomerId(u1.get().getUserId());
+                return cd.save(customer);
+            }
         }
-        return cd.save(customer);
+
 
     }
 
     @Override
     public Customers removeCustomer(LogInDTO login) throws CustomerException {
+
         Optional<Customers> customerWithEmail= cd.findByEmail(login.getUsername());
         Optional<Customers> customerWithPhone= cd.findByMobileNumber(login.getUsername());
 
@@ -111,17 +120,34 @@ public class ImCustomerService implements CustomerService{
 
     @Override
     public Customers viewCustomer(String Id) throws CustomerException, LogInException {
-        return null;
+        Optional<Customers> sessionOpt= cd.findByCustomerId(Id);
+
+        if(sessionOpt.isEmpty()) {
+            throw new CustomerException("♣█☻ Login to view Account ☻█♣");
+        }
+        else {
+            return sessionOpt.get();
+        }
     }
 
-    @Override
-    public List<Customers> viewAllCustomers(String key) throws CustomerException, LogInException {
-        return null;
-    }
     public boolean validateEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +"[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(emailRegex);
         return pattern.matcher(email).matches();
+    }
+
+//************************************************************Admin Feature*******************************************************************************************//
+    @Override
+    public List<Customers> viewAllCustomers(String key) throws CustomerException{
+
+        Optional<CustomerActive>  customerActive= cr.findByUserId(key);
+        if(customerActive.isEmpty()){
+            throw new CustomerException("♣█☻ Invalid Entry ☻█♣");
+        } else if (!customerActive.get().getRole().equals("Admin")) {
+            throw new CustomerException("♣█☻ You Are Not Admin ☻█♣");
+        }else{
+            return cd.findAll();
+        }
     }
 
 }

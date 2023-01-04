@@ -18,5 +18,6 @@ public interface CustomerService {
 
     public Customers viewCustomer(String Id) throws CustomerException, LogInException;
 
-    public List<Customers> viewAllCustomers(String key) throws CustomerException,LogInException;
+    public List<Customers> viewAllCustomers(String key) throws CustomerException;
+
 }
