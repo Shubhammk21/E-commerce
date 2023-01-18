@@ -1,10 +1,6 @@
 package com.ECommerce.Modules;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -48,7 +44,7 @@ public class Address {
     @Size(min = 5, max = 8, message = "pincode size cannot be greater then 6")
     private String pinCode;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private Customer customer;
+    @ManyToOne
+    private Customers customer;
 
 }

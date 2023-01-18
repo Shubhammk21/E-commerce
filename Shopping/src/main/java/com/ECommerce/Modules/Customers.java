@@ -65,15 +65,15 @@ public class Customers {
     @JsonIgnore
     private CustomerActive customerActive;
 
-    // @OneToOne(cascade = CascadeType.ALL,mappedBy = "customer")
-    // private Cart cart;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
+    @JsonIgnore
+    private List<Address> address ;
 
-    // @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer",fetch = FetchType.EAGER)
-    // private List<OrderDetails> details = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "customer")
+    @JsonIgnore
+    private Cart cart;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JsonIgnore
-//    private Address address ;
+
 
 
     public Customers(String firstName, String lastName, String mobileNumber, String email, String password, String dob, String gender) {

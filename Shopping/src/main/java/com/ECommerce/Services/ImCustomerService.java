@@ -49,8 +49,8 @@ public class ImCustomerService implements CustomerService{
             String key= RandomString.make(16);
             Customers c3= new Customers(sign.getFirstName(),sign.getLastName(),sign.getUsername(),
                     null,sign.getPassword(),sign.getDob(),sign.getGender());
-            stack.add(new LogInHistory(c3.getMobileNumber(),c3.getPassword(),LocalDateTime.now(),null,null));
-            c3.setHistory(stack);
+            checkHistoryLength(c3.getHistory());
+            c3.getHistory().add(0,new LogInHistory(c3.getMobileNumber(),c3.getPassword(),LocalDateTime.now(),null,null));
             cd.save(c3);
             c3.setCustomerActive(new CustomerActive(c3.getCustomerId(),c3.getPassword(),"Customer",key, LocalDateTime.now()));
             return cd.save(c3);
@@ -63,8 +63,8 @@ public class ImCustomerService implements CustomerService{
             String key= RandomString.make(16);
             Customers c3= new Customers(sign.getFirstName(),sign.getLastName(),null,
                     sign.getUsername(),sign.getPassword(),sign.getDob(),sign.getGender());
-            stack.add(new LogInHistory(c3.getEmail(),c3.getPassword(),LocalDateTime.now(),null,null));
-            c3.setHistory(stack);
+            checkHistoryLength(c3.getHistory());
+            c3.getHistory().add(0,new LogInHistory(c3.getEmail(),c3.getPassword(),LocalDateTime.now(),null,null));
             cd.save(c3);
             c3.setCustomerActive(new CustomerActive(c3.getCustomerId(),c3.getPassword(),"Customer",key, LocalDateTime.now()));
 
@@ -120,13 +120,16 @@ public class ImCustomerService implements CustomerService{
 
     @Override
     public Customers viewCustomer(String Id) throws CustomerException, LogInException {
-        Optional<Customers> sessionOpt= cd.findByCustomerId(Id);
+        return cd.findByCustomerId(Id).orElseThrow(()-> new CustomerException("♣█☻ Login to view Account ☻█♣"));
+    }
 
-        if(sessionOpt.isEmpty()) {
-            throw new CustomerException("♣█☻ Login to view Account ☻█♣");
-        }
-        else {
-            return sessionOpt.get();
+    @Override
+    public List<LogInHistory> viewLogInHistory(String id) throws CustomerException{
+        Optional<Customers> customer= cd.findByCustomerId(id);
+        if (customer.isEmpty()){
+            throw new CustomerException("No data there");
+        }else{
+            return customer.get().getHistory();
         }
     }
 
@@ -135,15 +138,21 @@ public class ImCustomerService implements CustomerService{
         Pattern pattern = Pattern.compile(emailRegex);
         return pattern.matcher(email).matches();
     }
+    public void checkHistoryLength(List<LogInHistory> customerActives){
+        if (customerActives.size()==5) {
+            customerActives.remove(4);
+        }
+    }
+
 
 //************************************************************Admin Feature*******************************************************************************************//
     @Override
     public List<Customers> viewAllCustomers(String key) throws CustomerException{
 
-        Optional<CustomerActive>  customerActive= cr.findByUserId(key);
+        Optional<CustomerActive> customerActive= cr.findByUuId(key);
         if(customerActive.isEmpty()){
             throw new CustomerException("♣█☻ Invalid Entry ☻█♣");
-        } else if (!customerActive.get().getRole().equals("Admin")) {
+        } else if (!customerActive.get().getRole().equalsIgnoreCase("Admin")) {
             throw new CustomerException("♣█☻ You Are Not Admin ☻█♣");
         }else{
             return cd.findAll();
