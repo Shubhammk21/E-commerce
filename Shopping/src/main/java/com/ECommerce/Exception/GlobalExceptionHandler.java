@@ -47,7 +47,20 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(CustomerException.class)
-    public ResponseEntity<MyErrorDetails> orderexceptionHandler(CustomerException e, WebRequest req) {
+    public ResponseEntity<MyErrorDetails> customerExceptionHandler(CustomerException e, WebRequest req) {
+
+        MyErrorDetails err = new MyErrorDetails();
+
+        err.setTimestamp(LocalDateTime.now());
+        err.setMessage(e.getMessage());
+        err.setDetails(req.getDescription(false));
+
+        return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+
+
+    }
+    @ExceptionHandler(LogInException.class)
+    public ResponseEntity<MyErrorDetails> logInExceptionHandler(LogInException e, WebRequest req) {
 
         MyErrorDetails err = new MyErrorDetails();
 

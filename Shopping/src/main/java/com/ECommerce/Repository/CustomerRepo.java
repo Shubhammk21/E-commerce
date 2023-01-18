@@ -15,5 +15,4 @@ public interface CustomerRepo extends JpaRepository<Customers,String> {
     public Optional<Customers> findByCustomerId(String id);
 
 
-
 }
