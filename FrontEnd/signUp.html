@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/FrontEnd\CssFiles\signup.css">
+</head>
+<body>
+    <div id="signup">
+        <div></div>
+        <div>
+            <form id="sigupfrom">
+                <div>
+                    <h2>Create a new account</h2>
+                    <p>It's quick and easy.</p>
+                </div>
+                <div id="f1">
+                    <label for="fname">First name</label>
+                    <input type="text" id="fname" placeholder="Enter First name" required>
+                    <label for="lname">Last name</label>
+                    <input type="text" id="lname" placeholder="Enter Last name" required>
+                </div>
+                <label for="username">Phone or Email</label><br />
+                <input type="text" id="username" placeholder="Enter Phone or Email" required><br />
+                <label for="username">Password</label><br />
+                <input type="text" id="password" placeholder="Enter Password" required><br />
+                <label for="dob">Date of birth</label>
+                <input type="date" id="dob" required autocomplete="off">
+                <label for="gender">Genger</label>
+                <div id="f2">
+                    <span class=".gender">
+                        <label class="sex" for="male">Male</label>
+                        <input type="radio" class="inputsex" name="insex" value="Male" id="male">
+                    </span>
+                    <span class=".gender">
+                        <label class="sex" for="female">Female</label>
+                        <input type="radio" class="inputsex" name="insex" value="Female" id="female">
+                    </span>
+                    <span class=".gender">
+                        <label class="sex" for="custom">Custom</label>
+                        <input type="radio" class="inputsex" name="insex" value="Custom" id="custom">
+                    </span>
+                </div>
+                <p>By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy. You may receive SMS notifications from us and can opt out at any time.</p>
+                <button id="button-86">Sign Up</button>
+                <a href="" style="text-align: center;">Already have an account?</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<Script src="/FrontEnd\JsFiles\signup.js"></Script>
+

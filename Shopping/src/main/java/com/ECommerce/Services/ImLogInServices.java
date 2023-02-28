@@ -14,6 +14,7 @@ import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,12 @@ public class ImLogInServices implements LogInServices{
     private CustomerActiveRepo caDao;
     @Autowired
     private AdminRepo aDao;
+
+//    @Autowired
+//    private LogInHistory logInHistory;
+
     @Override
+    @Transactional
     public Customers logInCustomer(LogInDTO dto) throws LogInException, CustomerException {
         System.out.println(dto.toString());
         Optional<Customers> customerWithEmail= cDao.findByEmail(dto.getUsername());
@@ -49,7 +55,7 @@ public class ImLogInServices implements LogInServices{
                     String key= RandomString.make(16);
                     checkHistoryLength(customer.getHistory());
                     customer.getHistory().add(0,new LogInHistory(customer.getMobileNumber(), customer.getPassword(), LocalDateTime.now(), null, null));
-                    customer.setCustomerActive(new CustomerActive(customer.getCustomerId(), customer.getPassword(), "Customer", key, LocalDateTime.now()));
+                    caDao.save(new CustomerActive(customer.getCustomerId(), customer.getPassword(), "Customer", key, LocalDateTime.now()));
                     return cDao.save(customer);
                 }
             }else {
@@ -67,8 +73,8 @@ public class ImLogInServices implements LogInServices{
                 }else{
                     String key= RandomString.make(16);
                     checkHistoryLength(customer.getHistory());
-                    customer.getHistory().add(0,new LogInHistory(customer.getMobileNumber(), customer.getPassword(), LocalDateTime.now(), null, null));
-                    customer.setCustomerActive(new CustomerActive(customer.getCustomerId(), customer.getPassword(), "Customer", key, LocalDateTime.now()));
+                    customer.getHistory().add(0,new LogInHistory(customer.getEmail(), customer.getPassword(), LocalDateTime.now(), null, null));
+                    caDao.save(new CustomerActive(customer.getCustomerId(), customer.getPassword(), "Customer", key, LocalDateTime.now()));
                     return cDao.save(customer);
                 }
             }
@@ -77,6 +83,7 @@ public class ImLogInServices implements LogInServices{
     }
 
     @Override
+    @Transactional
     public String logOutCustomer(String key) throws LogInException {
         Optional<CustomerActive> checkAlreadyIn= caDao.findByUuId(key);
         if(checkAlreadyIn.isEmpty()){
@@ -90,12 +97,16 @@ public class ImLogInServices implements LogInServices{
             return "Thank you ....";
         }
     }
-    public void checkHistoryLength(List<LogInHistory> customerActives){
-        if (customerActives.size()==5) {
-            customerActives.remove(4);
+    public void checkHistoryLength(List<LogInHistory> customerLogHistory){
+        if(customerLogHistory.size()==5) {
+            //LogInHistory cleaningLast=
+            customerLogHistory.remove(4);
+
         }
     }
-
+    public  CustomerActive checkActiveStatus(String cusID)throws LogInException{
+         return caDao.findByUserId(cusID).orElseThrow(() -> new LogInException("No record present"));
+    }
 //8888888888888888888888888888888888888888888888888888888888 Admin features 88888888888888888888888888888888888888888888888888888888888888888888
 
     @Override
@@ -126,7 +137,9 @@ public class ImLogInServices implements LogInServices{
         Optional<CustomerActive> checkAlreadyIn= caDao.findByUuId(key);
         if(checkAlreadyIn.isEmpty()){
             throw new LogInException("♣█☻ Key Error ☻█♣");
-        }else {
+        } else if(checkAlreadyIn.get().getRole().equalsIgnoreCase("admin")) {
+            throw new LogInException("♣█☻ Key Error ☻█♣");
+        } else {
             caDao.delete(checkAlreadyIn.get());
             return "Thank you ....";
         }

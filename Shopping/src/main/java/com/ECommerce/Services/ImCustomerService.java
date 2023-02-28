@@ -52,7 +52,7 @@ public class ImCustomerService implements CustomerService{
             checkHistoryLength(c3.getHistory());
             c3.getHistory().add(0,new LogInHistory(c3.getMobileNumber(),c3.getPassword(),LocalDateTime.now(),null,null));
             cd.save(c3);
-            c3.setCustomerActive(new CustomerActive(c3.getCustomerId(),c3.getPassword(),"Customer",key, LocalDateTime.now()));
+            cr.save(new CustomerActive(c3.getCustomerId(),c3.getPassword(),"Customer",key, LocalDateTime.now()));
             return cd.save(c3);
 
         }
@@ -66,7 +66,7 @@ public class ImCustomerService implements CustomerService{
             checkHistoryLength(c3.getHistory());
             c3.getHistory().add(0,new LogInHistory(c3.getEmail(),c3.getPassword(),LocalDateTime.now(),null,null));
             cd.save(c3);
-            c3.setCustomerActive(new CustomerActive(c3.getCustomerId(),c3.getPassword(),"Customer",key, LocalDateTime.now()));
+            cr.save(new CustomerActive(c3.getCustomerId(),c3.getPassword(),"Customer",key, LocalDateTime.now()));
 
             return cd.save(c3);
         }
@@ -140,7 +140,8 @@ public class ImCustomerService implements CustomerService{
     }
     public void checkHistoryLength(List<LogInHistory> customerActives){
         if (customerActives.size()==5) {
-            customerActives.remove(4);
+            LogInHistory maintainSize= customerActives.remove(4);
+
         }
     }
 

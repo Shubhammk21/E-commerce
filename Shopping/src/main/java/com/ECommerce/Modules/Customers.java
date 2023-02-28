@@ -60,11 +60,6 @@ public class Customers {
     @JsonIgnore
     private List<LogInHistory> history= new ArrayList<>(5);
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customerId")
-    @JsonIgnore
-    private CustomerActive customerActive;
-
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
     @JsonIgnore
     private List<Address> address ;
