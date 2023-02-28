@@ -19,7 +19,6 @@ public class SpringFoxCoonfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(getInfo()).select().apis(RequestHandlerSelectors.any()).paths(PathSelectors.any()).build();
     }
-
     private ApiInfo getInfo() {
         return new ApiInfo("Online Shopping Application",
                 "This project is developed by Masai School Student \n"+

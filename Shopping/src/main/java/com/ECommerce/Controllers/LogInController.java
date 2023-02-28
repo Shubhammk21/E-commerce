@@ -4,12 +4,15 @@ import com.ECommerce.DTO.LogInDTO;
 import com.ECommerce.Exception.CustomerException;
 import com.ECommerce.Exception.LogInException;
 import com.ECommerce.Modules.Admin;
+import com.ECommerce.Modules.CustomerActive;
 import com.ECommerce.Modules.Customers;
 import com.ECommerce.Services.LogInServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.websocket.server.PathParam;
 
 @RestController
 public class LogInController {
@@ -28,6 +31,11 @@ public class LogInController {
         String str= login.logOutCustomer(key);
 
         return new ResponseEntity<String>(str, HttpStatus.OK);
+    }
+    @GetMapping("LogIn/ActiveStatus/{id}")
+    public ResponseEntity<CustomerActive> checkActiveStatus(@PathParam("id") String cusID)throws LogInException{
+        CustomerActive state= login.checkActiveStatus(cusID);
+        return new ResponseEntity<CustomerActive>(state,HttpStatus.ACCEPTED);
     }
 
 //88888888888888888888888888888888888888888888888888888 Admin Features 8888888888888888888888888888888888888888888888888888888\\

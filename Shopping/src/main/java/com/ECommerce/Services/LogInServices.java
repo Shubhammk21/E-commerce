@@ -4,6 +4,7 @@ import com.ECommerce.DTO.LogInDTO;
 import com.ECommerce.Exception.CustomerException;
 import com.ECommerce.Exception.LogInException;
 import com.ECommerce.Modules.Admin;
+import com.ECommerce.Modules.CustomerActive;
 import com.ECommerce.Modules.Customers;
 
 public interface LogInServices {
@@ -16,5 +17,7 @@ public interface LogInServices {
     public Admin logInAdmin(LogInDTO dto) throws LogInException;
 
     public String logOutAdmin(String key) throws LogInException;
+
+    public CustomerActive checkActiveStatus(String cusID)throws LogInException;
 
 }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/FrontEnd\CssFiles\LogIn.css">
+    <link rel="stylesheet" href="/FrontEnd\CssFiles\navbar.css">
+    <link href="//db.onlinewebfonts.com/c/3e13bee6781c476e142a2bca4d9ab99c?family=Kunstler+Script" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div id="navbar">
+        <div class="flexnav">
+            <div class="navlogo">
+                <div>
+                    <h1>StarShopping</h1>
+                    <p>Created by Pooram</p>
+                </div>
+                <div>
+                    <img src="/FrontEnd\Images\clipart1051406.png" alt="">
+                </div>
+            </div>
+            <div id="topbar">
+                <input type="search" placeholder="Search Products" id="ivalue">
+                <input type="button" value="Search" id="input" onclick="SearchData()">
+            </div>
+        </div>
+        <div id="navicon">
+            <div id="home">
+                <p class="text">Home</p>
+            </div>
+            <div id="category">
+                <p class="text">Category</p>
+                <div class="drop"></div>
+            </div>
+            <div id="profile">
+                <p class="text">Profile</p>
+                <div class="drop">
+                    <p onclick="ViewProfile()">View Profile</p>
+                    <p onclick="ChangePass()">Change Password</p>
+                    <p onclick="LogInHistory()">LogIn History</p>
+                    <p onclick="UpdateProfile()">Update Profile</p>
+                    <p onclick="LogOut()">Log Out</p>
+                </div>
+            </div>
+            <div id="loginnav">
+                <p class="text">LogIn/SignUp</p>
+                <div class="drop">
+                    <p id="loginfun">LogIn</p>
+                    <p id="signupfun">SignUp</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="login">
+        <h1 id="logback"><i class="fa-solid fa-circle-arrow-left"></i></h1>
+        <div>
+            <div id="logo">
+                <div>
+                    <h1>StarShopping</h1>
+                    <p>Created by Pooram</p>
+                </div>
+                <div>
+                    <img src="/FrontEnd\Images\clipart1051406.png" alt="">
+                </div>
+            </div>
+            <div>
+                <img src="https://www.addictioncenter.com/app/uploads/2020/01/online_shopping_addiction-scaled.jpeg" alt="">
+            </div>
+            <div>
+                <form>
+                    <label for="username">Phone or Email</label><br />
+                    <input type="text" id="username" placeholder="Enter Phone or Email"><br />
+                    <label for="username">Password</label><br />
+                    <input type="text" id="password" placeholder="Enter Password"><br />
+                    <button id="button-86">LogIn</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="product">
+
+        </div>
+    </div>
+    
+</body>
+</html>
+<script src="/FrontEnd\JsFiles\LogIn.js"></script>
+<script src="/FrontEnd\JsFiles\index.js"></script>
+<script src="/FrontEnd\JsFiles\navbar.js"></script>
+<script src="https://kit.fontawesome.com/9018df668b.js" crossorigin="anonymous"></script>
+
