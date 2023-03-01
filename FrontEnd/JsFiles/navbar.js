@@ -42,7 +42,7 @@ async function viewProfileUpdateData(fname,lname,pass,phone,email,dob,gender){
                 'lastName' : lname.value,
                 'email': email.value,
                 'mobileNumber': phone.value,
-                'password' : 'Mp21mk6293@',
+                'password' : pass,
             })
         });
         let data= await res.json();
@@ -60,6 +60,9 @@ async function viewProfileUpdateData(fname,lname,pass,phone,email,dob,gender){
 }
 
 let data=JSON.parse(localStorage.getItem("myProfile"));
+if(data!=null){
+    document.querySelector("#loginnav>p").innerHTML=data.firstName;
+}
 display(data);
 function display(data){
    let fname=document.getElementById("fname");
@@ -103,6 +106,7 @@ document.getElementById("button-myprofile").addEventListener("click",function(ev
     document.getElementById("button-savemyprofile").style.display="block";
 });
 document.getElementById("button-savemyprofile").addEventListener("click",function(event){
+    event.preventDefault();
     let fname=document.getElementById("fname");
     let lname=document.getElementById("lname");
     let phone=document.getElementById("username");
@@ -120,4 +124,5 @@ document.getElementById("button-savemyprofile").addEventListener("click",functio
     localStorage.removeItem("myProfile");
     localStorage.setItem("myProfile",JSON.stringify(profiledata));
 });
+
 
