@@ -26,7 +26,7 @@ public class LogInController {
 
         return new ResponseEntity<Customers>(customer, HttpStatus.ACCEPTED);
     }
-    @PostMapping("Customers/LogOut")
+    @DeleteMapping("Customers/LogOut")
     public ResponseEntity<String> logOutCustomer(@RequestParam(required = false) String key) throws LogInException{
         String str= login.logOutCustomer(key);
 
@@ -46,7 +46,7 @@ public class LogInController {
 
         return new ResponseEntity<Admin>(admin, HttpStatus.ACCEPTED);
     }
-    @PostMapping("Admin/LogOut")
+    @DeleteMapping("Admin/LogOut")
     public ResponseEntity<String> logOutAdmin(@RequestParam(required = false) String key) throws LogInException{
         String str= login.logOutAdmin(key);
 
