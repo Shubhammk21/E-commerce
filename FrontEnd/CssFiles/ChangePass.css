@@ -1,0 +1,137 @@
+html{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color:rgba(236, 227, 245, 0.421);
+}
+#changePass_div{
+    margin: auto;
+    background-color:white ;
+    margin-top: 100px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6% 5%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+#changePass_div>div{
+    width: 50%;
+}
+#changePass_div h1{
+    font-size: 38px;
+    font-weight: 600;
+    color: #28282ddc;
+}
+#changePass_div>div>p:nth-child(2){
+    margin-bottom: 8%;
+    color: #c7bdbd;
+}
+#changePass_div p{
+    color: #ccc;
+    font-size: 14px;
+    font-family: 700;
+}
+#changePass_div a{
+    display: block;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+}
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+/* #output{
+  color: red;
+} */
+#output i{
+  color: red;
+  font-weight: 800;
+} 
+#changePassInputs>form>i{
+  position: absolute;
+  font-size: 25px;
+  right: 26%;
+  /* bottom: 60%; */
+  padding-top: 1%;
+  display: none;
+}
+
+#button-ChangePass {
+    all: unset;
+    width: 80%;
+    margin: auto;
+    margin-top: 6px;
+    height: 25px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    position: relative;
+    color: #f0f0f0;
+    cursor: pointer;
+    z-index: 1;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  #button-ChangePass::after,
+  #button-ChangePass::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99999;
+    transition: all .4s;
+  }
+  
+  #button-ChangePass::before {
+    transform: translate(0%, 0%);
+    width: 100%;
+    height: 100%;
+    background: #28282d;
+    border-radius: 10px;
+  }
+  
+  #button-ChangePass::after {
+    transform: translate(10px, 10px);
+    width: 35px;
+    height: 35px;
+    background: #ffffff15;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 50px;
+  }
+  
+  #button-ChangePass:hover::before {
+    transform: translate(5%, 20%);
+    width: 110%;
+    height: 110%;
+  }
+  
+  #button-ChangePass:hover::after {
+    border-radius: 10px;
+    transform: translate(0, 0);
+    width: 100%;
+    height: 100%;
+  }
+  
+  #button-ChangePass:active::after {
+    transition: 0s;
+    transform: translate(0, 5%);
+  }
+  i{
+    color: #25cf60;
+  }

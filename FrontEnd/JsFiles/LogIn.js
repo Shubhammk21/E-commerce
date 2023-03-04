@@ -16,9 +16,11 @@ async function doLogin(pass,phone){
             if(data.message!=undefined){
                 alert(data.message);
             }else{
-               let token=checkLogin(data.customerId);
-                localStorage.setItem("token",JSON.stringify(token));
+                localStorage.removeItem("myProfile");
+                localStorage.setItem("myProfile",JSON.stringify(data));
+                checkLogin(data.customerId);
                 alert("Login Successfull!!!");
+                window.location.reload();
             }
     }catch(err){
         console.log(err);
@@ -36,8 +38,8 @@ async function doLogin(pass,phone){
                 let data=await res.json();
                 //console.log(data)
                 if(data.message==undefined){
-                    //key=data;
-                    localStorage.setItem("user",JSON.stringify(data));
+                    localStorage.removeItem("token");
+                    localStorage.setItem("token",JSON.stringify(data));
                 }else{
                     alert(data.message);
                 }
@@ -55,11 +57,11 @@ document.querySelector("#button-86").addEventListener("click",function(event){
     if(phone.value=="" || pass.value=="" ){
         alert("Fill all the Inputs!!");
     }
-    console.log(phone.value,pass.value);
+   // console.log(phone.value,pass.value);
     let uuid=doLogin(pass,phone);
 });
 document.getElementById("loginfun").addEventListener("click",function(event){
-    console.log("working");
+    //console.log("working");
     let log= document.getElementById("login");
     let nav=document.querySelector("#navbar");
     nav.style.filter="blur(8px)";
@@ -89,6 +91,6 @@ document.getElementById("logback").addEventListener("click",function(event){
     document.querySelector("#navbar").style.filter="none"
     document.querySelector("#main").style.filter="none";
     log.style.display="none";
-    document.querySelector("#navbar").nav.style.userSelect="auto";
-    document.querySelector("#main").main.style.userSelect="auto";
+    document.querySelector("#navbar").style.userSelect="auto";
+    document.querySelector("#main").style.userSelect="auto";
 });
