@@ -16,9 +16,11 @@ async function doLogin(pass,phone){
             if(data.message!=undefined){
                 alert(data.message);
             }else{
-               let token=checkLogin(data.customerId);
-                //localStorage.setItem("token",JSON.stringify(token));
+                localStorage.removeItem("myProfile");
+                localStorage.setItem("myProfile",JSON.stringify(data));
+                checkLogin(data.customerId);
                 alert("Login Successfull!!!");
+                window.location.reload();
             }
     }catch(err){
         console.log(err);
@@ -36,7 +38,7 @@ async function doLogin(pass,phone){
                 let data=await res.json();
                 //console.log(data)
                 if(data.message==undefined){
-                    //key=data;
+                    localStorage.removeItem("token");
                     localStorage.setItem("token",JSON.stringify(data));
                 }else{
                     alert(data.message);

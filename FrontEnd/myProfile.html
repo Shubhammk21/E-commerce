@@ -37,9 +37,9 @@
                 <p class="text">Profile</p>
                 <div class="drop">
                     <p onclick="ViewProfile()">View Profile</p>
-                    <p onclick="ChangePass()">Change Password</p>
+                    <p onclick="ChangePassword()">Change Password</p>
                     <p onclick="LogInHistory()">LogIn History</p>
-                    <p onclick="UpdateProfile()">Update Profile</p>
+                    <p onclick="ManageAddresses()">Manage Addresses</p>
                     <p onclick="LogOut()" id="logout" >Log Out</p>
                 </div>
             </div>
@@ -82,8 +82,8 @@
                     <input type="radio" class="inputsex" name="insex" value="Custom" id="custom">
                 </span>
             </div>
-            <button id="button-myprofile">Edit</button>
-            <button id="button-savemyprofile" style="text-align:center;">Save</button>
+            <button id="button-myprofile" onclick="buttonMyprofile()">Edit</button>
+            <button id="button-savemyprofile" style="text-align:center;" onclick="buttonSavemyprofile()">Save</button>
         </form>
     </div>
 </body>
