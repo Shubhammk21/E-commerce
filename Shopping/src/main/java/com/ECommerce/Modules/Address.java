@@ -23,7 +23,7 @@ public class Address {
             @Parameter(name = StringSequenceGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d")
 
     })
-    private int addressId;
+    private String addressId;
 
     @NotNull(message = "streetNo can not be null")
     private String streetNo;

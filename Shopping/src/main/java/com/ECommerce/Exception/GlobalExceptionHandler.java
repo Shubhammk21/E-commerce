@@ -72,12 +72,12 @@ public class GlobalExceptionHandler {
 
 
     }
-//
-//    @ExceptionHandler(AddressException.class)
-//    public ResponseEntity<MyErrorDetails> AddressException(AddressException ae,WebRequest req){
-//        MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),ae.getMessage(),req.getDescription(false));
-//        return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
-//    }
+
+    @ExceptionHandler(AddressException.class)
+    public ResponseEntity<MyErrorDetails> AddressException(AddressException ae,WebRequest req){
+        MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),ae.getMessage(),req.getDescription(false));
+        return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+    }
 //
 //    @ExceptionHandler(CartException.class)
 //    public ResponseEntity<MyErrorDetails> cartException(CartException ce,WebRequest req){
