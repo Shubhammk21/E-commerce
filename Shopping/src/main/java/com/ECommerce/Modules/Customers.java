@@ -15,10 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 @Entity
 @Data
@@ -62,7 +59,7 @@ public class Customers {
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
     @JsonIgnore
-    private List<Address> address ;
+    private Set<Address> address ;
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "customer")
     @JsonIgnore

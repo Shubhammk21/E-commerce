@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.ECommerce.DTO.AddressType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,13 +24,22 @@ public class Address {
             @Parameter(name = StringSequenceGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d")
 
     })
-    private int addressId;
+    private String addressId;
 
-    @NotNull(message = "streetNo can not be null")
-    private String streetNo;
+    @NotNull
+    private String aName;
 
-    @NotNull(message = "building name can not be null")
-    private String buildingName;
+    private String APhoneNum;
+
+    @NotNull(message = "pinCode can not be null")
+    @Size(min = 5, max = 8, message = "PinCode size cannot be greater then 6")
+    private String pinCode;
+
+    @NotNull(message = "locality can not be null")
+    private String locality;
+
+    @NotNull(message = "Fill streetAddress")
+    private String streetAddress;
 
     @NotNull(message = "city cannot can not be null")
     private String city;
@@ -40,9 +50,11 @@ public class Address {
     @NotNull(message = "country can not be null")
     private String country;
 
-    @NotNull(message = "pinCode can not be null")
-    @Size(min = 5, max = 8, message = "pincode size cannot be greater then 6")
-    private String pinCode;
+    private String landmark;
+    private String APhoneNumAlternative;
+
+    @NotNull(message = "Address type not null")
+    private AddressType addressType;
 
     @ManyToOne
     private Customers customer;
