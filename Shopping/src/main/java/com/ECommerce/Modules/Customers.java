@@ -57,8 +57,9 @@ public class Customers {
     @JsonIgnore
     private List<LogInHistory> history= new ArrayList<>(5);
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
+    @OneToMany(cascade = CascadeType.ALL)
     @JsonIgnore
+    @JoinColumn(name = "customerId")
     private Set<Address> address ;
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "customer")

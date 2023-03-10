@@ -42,7 +42,7 @@ public class AddressServiceImply implements AddressService{
 
     @Override
     public Address deleteAddress(String addressId) throws AddressException {
-        Address address= aRepo.findById(addressId).orElseThrow(()-> new ArithmeticException("Address_ID is wrong"));
+        Address address= aRepo.findById(addressId).orElseThrow(()-> new AddressException("Address_ID is wrong"));
         aRepo.delete(address);
         return address;
     }
