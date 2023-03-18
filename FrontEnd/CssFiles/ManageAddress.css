@@ -28,7 +28,7 @@ form {
     margin: 0 auto;
     /* margin-top: 50px; */
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    padding: 30px;
+    padding: 3%;
     width: 50%
 } 
 label {
@@ -147,8 +147,9 @@ textarea {
     margin-bottom: 10px;
 }
 .ma_2_colums{
-    position: relative;
+    position: fixed;
 }
+/* .ma_2_colums:n */
 .ma_2_colums input, .ma_2_colums textarea{
     outline: none;
     transition: 0.5s;
@@ -232,6 +233,27 @@ option:disabled {
 ._1cpOwe {
     position: relative;
     display: block;
+}
+form{
+    /* transition: 1500ms; */
+    /* display: none; */
+    position: fixed;
+    top: 110%;
+    transform: rotate(115);
+    border-radius: 30px;
+}
+#manage_Addresses{
+    margin-top: 110px;
+}
+.manage_Address_div{
+    width: 50%;
+    margin: auto;
+    padding: 1.5%;
+    border: .1px solid rgb(170, 170, 170);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    /* transition: 1500ms; */
+    border-radius: 30px;
+
 }
 
 

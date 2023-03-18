@@ -6,10 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/FrontEnd\CssFiles\ManageAddress.css">
+    <link rel="stylesheet" href="/FrontEnd\CssFiles\navbar.css">
 </head>
 <body>
+    <div id="navbar">
+        <div class="flexnav">
+            <div class="navlogo">
+                <div>
+                    <h1>StarShopping</h1>
+                    <p>Created by Pooram</p>
+                </div>
+                <div>
+                    <img src="/FrontEnd\Images\clipart1051406.png" alt="">
+                </div>
+            </div>
+            <div id="topbar">
+                <input type="search" placeholder="Search Products" id="ivalue">
+                <input type="button" value="Search" id="input" onclick="SearchData()">
+            </div>
+        </div>
+        <div id="navicon">
+            <div id="home">
+                <p class="text"><a href="index.html">Home</a></p>
+            </div>
+            <div id="category">
+                <p class="text">Category</p>
+                <div class="drop"></div>
+            </div>
+            <div id="profile">
+                <p class="text">Profile</p>
+                <div class="drop">
+                    <p onclick="ViewProfile()"><a href="myProfile.html"></a> View Profile</p>
+                    <p><a href="ChangePassword.html">Change Password</a></p>
+                    <p onclick="LogInHistory()">LogIn History</p>
+                    <p><a href="ManageAddress.html">Manage Addresses</a></p>
+                    <p onclick="LogOut()" id="logout"> Log Out</p>
+                </div>
+            </div>
+            <div id="loginnav">
+                <p class="text">LogIn/SignUp</p>
+                <div class="drop">
+                    <p id="loginfun">LogIn</p>
+                    <p id="signupfun">SignUp</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div>
-        <form>
+        <div id="manage_Addresses">
+            <h2 style="text-align: center;">Manage Addresses</h2>
+            <div class="manage_Address_div">
+                <button onclick="ManageDivAddressOpen()"><i class="fa-solid fa-plus"></i><span>ADD A NEW ADDRESS</span></button>
+            </div>
+        </div>
+        <form id="addressFrom">
             <span style="text-align: start; font-weight: 630;">ADD A NEW ADDRESS</span>
             <div class="location">
                 <button id="button-location"><i class="fa-solid fa-location-crosshairs" style="margin-right: 3%;"></i>Use my current locaton</button>
@@ -113,10 +163,11 @@
             </div>
             <div class="ma_save_cancel">
                 <button id="button-maSave">Save</button>
-                <button id="button-maCancel">Cancel</button>
+                <button id="button-maCancel" onclick="ManageDivAddressCancel()">Cancel</button>
             </div>
         </form>
     </div>
 </body>
 </html>
 <script src="https://kit.fontawesome.com/9018df668b.js" crossorigin="anonymous"></script>
+<script src="/FrontEnd\JsFiles\ManageAddress.js"></script>
