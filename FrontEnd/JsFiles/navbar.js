@@ -77,13 +77,14 @@ async function LogOut(){
         console.log(error)
     }
 }
-async function ChangePassword(newPassword){//this method used for changing password
+async function ChangePassword(newPassword){  //this method used for changing password
     let myProfile= JSON.parse(localStorage.getItem("myProfile"));
     try {
         let res= await fetch("http://localhost:8088/customer?key="+token.uuId,{
             method:'PUT',
             headers:{
                 "Content-Type":"application/json"
+                
             },
             body:JSON.stringify({
                 'customerId':myProfile.userId,
@@ -109,15 +110,18 @@ async function ChangePassword(newPassword){//this method used for changing passw
 
 //******************************************************************************************************This is a Normal  JS ********************************************************* */
 let logindetails= document.querySelector("#profile>div"); 
+let hideloginbar= document.querySelector("#loginnav>div");
 
 if(token==null){//this use for check if user login or not this is do its hide login user function such as view profile and logout
     logindetails.style.display="none";
+    hideloginbar.style.display="block"; // this will help to unhide login or signup section if user is not login
 }else{
     let myProfiledata=JSON.parse(localStorage.getItem("myProfile"));
     if(myProfiledata==null){
         document.querySelector("#loginnav>p").innerHTML="LogIn/SignUp";
     }else{
         document.querySelector("#loginnav>p").innerHTML=myProfiledata.firstName;
+        hideloginbar.style.display="none"; //this will help to hide login or signup section if user is already login
         let page= window.location.pathname;
         let pageindex= page.substring(page.lastIndexOf('/'));
         if(pageindex="myProfile.html"){//this

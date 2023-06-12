@@ -1,15 +1,20 @@
-document.querySelector("#AddressList");
+let addresslist_append=document.querySelector("#AddressList");
 
-let customerId= JSON.parse(localStorage.getItem("toten"))|| [];
+let customer= JSON.parse(localStorage.getItem("toten"))|| [];
+
+//let addressListData= JSON.parse(localStorage.getItem("addressListData")) || [];
 
 async function addressList(){
     if(token==null){
         window.location.href="/FrontEnd\signUp.html";
     }else{
         try {
-            let res= await fetch (`http://localhost:8088/GetAddressList/${customerId.customerId}`);
+            let res= await fetch (`http://localhost:8088/GetAddressList/${customer.customerId}`);// this api call the all the address by customer id;
             let data= await res.json();
-            Addresses(data);
+            if(data!=null){
+                localStorage.removeItem("addressListData");
+                localStorage.setItem("addressListData",JSON.stringify(data));
+            }
             
         } catch (error) {
             console.log(error)
@@ -17,8 +22,45 @@ async function addressList(){
     }
 
 }
-function postAddress(){
-    
+async function postAddress(data){
+    if(token==null){
+        window.location.href="/FrontEnd\signUp.html";
+    }
+    else{
+        try {
+            
+            let res= await fetch(` http://localhost:8080/Add/Address/${customer.customerId}`,{// this api post the address
+                method:'POST',
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                   
+                    "addressType": data.addressType,
+                    "aname": data.name,
+                    "aphoneNum": data.mobileNumber,
+                    "aphoneNumAlternative": data.AlternativeNumber,
+                    "city": data.city,
+                    "country": data.country,
+                    "landmark": data.landmark,
+                    "locality": data.locality,
+                    "pinCode": data.pinCode,
+                    "state": data.state,
+                    "streetAddress": data.streetAddress
+
+                })
+            });
+
+            let apiData= await res.json();
+            if(apiData!=null){
+                localStorage.removeItem("addressListData");
+                localStorage.setItem("addressListData",JSON.stringify(data));
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 function Addresses(addresses){// this method create addreses list tables 
@@ -27,7 +69,7 @@ function Addresses(addresses){// this method create addreses list tables
         let div_but= document.createElement("div");
 
         let button= document.createElement("button");
-        button.innerText= addresses.addressType;
+        button.innerText= i.addressType;
 
         let dots= document.createElement("button");
         dots.innerText= `<i class="fa-solid fa-ellipsis-vertical"></i>`;
@@ -41,8 +83,8 @@ function Addresses(addresses){// this method create addreses list tables
         let dtag= document.createElement("p");
         dtag.innerText= addresses.streetAddress +" "+ addresses.locality +" "+ addresses.city +" "+ addresses.state +" - "+addresses.pinCode;
         
-        let appendDiv= document.getElementById("manage_Addresses");
-        appendDiv.append(div_but, ntag, dtag);
+        //let appendDiv= document.getElementById("manage_Addresses");
+        addresslist_append.append(div_but, ntag, dtag);
 
     });
 
@@ -59,3 +101,4 @@ function ManageDivAddressCancel(){
     document.querySelector("#addressFrom").style.display="none";
 
 }
+
