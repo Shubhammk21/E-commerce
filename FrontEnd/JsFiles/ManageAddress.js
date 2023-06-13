@@ -1,6 +1,6 @@
 let addresslist_append=document.querySelector("#AddressList");
 
-let customer= JSON.parse(localStorage.getItem("toten"))|| [];
+let customer= JSON.parse(localStorage.getItem("token"))|| [];
 
 //let addressListData= JSON.parse(localStorage.getItem("addressListData")) || [];
 
@@ -9,10 +9,10 @@ async function addressList(){
         window.location.href="/FrontEnd\signUp.html";
     }else{
         try {
-            let res= await fetch (`http://localhost:8088/GetAddressList/${customer.customerId}`);// this api call the all the address by customer id;
+            let res= await fetch ("http://localhost:8088/GetAddressList/"+customer.userId);// this api call the all the address by customer id;
             let data= await res.json();
             if(data!=null){
-                localStorage.removeItem("addressListData");
+                //localStorage.removeItem("addressListData");
                 localStorage.setItem("addressListData",JSON.stringify(data));
             }
             
@@ -22,6 +22,7 @@ async function addressList(){
     }
 
 }
+console.log(customer.userId);
 async function postAddress(data){
     if(token==null){
         window.location.href="/FrontEnd\signUp.html";
@@ -84,7 +85,7 @@ function Addresses(addresses){// this method create addreses list tables
         dtag.innerText= addresses.streetAddress +" "+ addresses.locality +" "+ addresses.city +" "+ addresses.state +" - "+addresses.pinCode;
         
         //let appendDiv= document.getElementById("manage_Addresses");
-        addresslist_append.append(div_but, ntag, dtag);
+        addresslist_append.append(div_but, ntag, dtag) ;
 
     });
 
