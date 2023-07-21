@@ -23,7 +23,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class Products {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "demo_sql")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "Product_sql")
     @GenericGenerator(name = "demo_sql",strategy = "com.ECommerce.Modules.StringSequenceGenerator",parameters = {
             @Parameter(name = StringSequenceGenerator.INCREMENT_PARAM,value="1"),
             @Parameter(name = StringSequenceGenerator.VALUE_PREFIX_PARAMETER, value = "PID_"),

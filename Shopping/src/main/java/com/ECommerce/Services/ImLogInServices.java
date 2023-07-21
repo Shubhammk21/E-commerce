@@ -36,7 +36,6 @@ public class ImLogInServices implements LogInServices{
     @Override
     @Transactional
     public Customers logInCustomer(LogInDTO dto) throws LogInException, CustomerException {
-        System.out.println(dto.toString());
         Optional<Customers> customerWithEmail= cDao.findByEmail(dto.getUsername());
         Optional<Customers> customerWithPhone= cDao.findByMobileNumber(dto.getUsername());
 
