@@ -39,7 +39,7 @@
                     <p onclick="ViewProfile()"><a href="myProfile.html"></a> View Profile</p>
                     <p><a href="ChangePassword.html">Change Password</a></p>
                     <p onclick="LogInHistory()">LogIn History</p>
-                    <p><a href="ManageAddress.html">Manage Addresses</a></p>
+                    <p onclick="addressList()">Manage Addresses</p>
                     <p onclick="LogOut()" id="logout"> Log Out</p>
                 </div>
             </div>
@@ -60,7 +60,7 @@
             </div>
         </div>
         <form id="addressFrom">
-            <span style="text-align: start; font-weight: 630;">ADD A NEW ADDRESS</span>
+            <span id="titalAddress" style="text-align: start; font-weight: 630;">ADD A NEW ADDRESS</span>
             <div class="location">
                 <button id="button-location"><i class="fa-solid fa-location-crosshairs" style="margin-right: 3%;"></i>Use my current locaton</button>
             </div>
@@ -78,13 +78,13 @@
                     <label for="pincode" class="_1osQq7">Pincode</label>
                 </div>
                 <div class="ma_2_colums">
-                    <input type="text" class="_1w3ZZo _2mFmU7" required="" name="addressLine2" tabindex="4" value="" fdprocessedid="sklshv">
-                    <label for="addressLine2" class="_1osQq7">Locality</label>
+                    <input type="text" class="_1w3ZZo _2mFmU7" required="" name="locality" tabindex="4" value="" fdprocessedid="sklshv">
+                    <label for="locality" class="_1osQq7">Locality</label>
                 </div>
             </div>
             <div class="ma_2_colums">
-                <textarea class="Area_and_Street" name="addressLine1" rows="4" cols="10" tabindex="5" required="" autocomplete="street-address"></textarea>
-                <label for="addressLine1">Address (Area and Street)</label>
+                <textarea class="Area_and_Street" name="areaAndStreet" rows="4" cols="10" tabindex="5" required="" autocomplete="street-address"></textarea>
+                <label for="areaAndStreet">Address (Area and Street)</label>
             </div>
             <div class="ma_2_row">
                 <div class="ma_2_colums">
@@ -146,14 +146,14 @@
                 <div>
                     <p class=ma_addressType">Address Type</p>
                     <div class="ma_hw">
-                        <label for="HOME">
-                            <input type="radio" class="_3DAmyP" name="locationTypeTag" readonly="" id="HOME">
+                        <label for="Home">
+                            <input type="radio" class="_3DAmyP" name="locationTypeTag" readonly="" id="HOME" value="Home">
                             <div class="_2jIO64">
                                 <span>Home</span>
                             </div>
                         </label>
-                        <label for="WORK">
-                            <input type="radio" class="_3DAmyP" name="locationTypeTag" readonly="" id="WORK">
+                        <label for="Work">
+                            <input type="radio" class="_3DAmyP" name="locationTypeTag" readonly="" id="WORK" value="Work">
                             <div class="_2jIO64">
                                 <span>Work</span>
                             </div>

@@ -13,7 +13,7 @@ async function addressList(){
             let data= await res.json();
             //console.log(data);
             if(data!=null){
-                //localStorage.removeItem("addressListData");
+                localStorage.removeItem("addressListData");
                 localStorage.setItem("addressListData",JSON.stringify(data));
             }
             
@@ -30,32 +30,20 @@ async function postAddress(data){
     }
     else{
         try {        
-            let res= await fetch('http://localhost:8080/Add/Address/'+customer.customerId,{// this api post the address
+            let res= await fetch("http://localhost:8088/Add/Address/"+customer.userId,{// this api post the address
                 method:'POST',
                 headers:{
                     "Content-Type":"application/json"
                 },
-                body:JSON.stringify({
-                   
-                    "addressType": data.addressType,
-                    "aname": data.name,
-                    "aphoneNum": data.mobileNumber,
-                    "aphoneNumAlternative": data.AlternativeNumber,
-                    "city": data.city,
-                    "country": data.country,
-                    "landmark": data.landmark,
-                    "locality": data.locality,
-                    "pinCode": data.pinCode,
-                    "state": data.state,
-                    "streetAddress": data.streetAddress
-
-                })
+                body:JSON.stringify(data)
             });
 
             let apiData= await res.json();
-            if(apiData!=null){
-                localStorage.removeItem("addressListData");
-                localStorage.setItem("addressListData",JSON.stringify(data));
+            if(apiData!==null){
+                addressListData.push(apiData);
+                //console.log(addressListData)
+                localStorage.setItem("addressListData",JSON.stringify(addressListData));
+                
             }
 
         } catch (error) {
@@ -64,12 +52,58 @@ async function postAddress(data){
     }
 }
 
+async function EditAddress(data, index) {
+    try {
+        let res= await fetch("http://localhost:8088/UpdateAddress",{// this api post the address
+            method: 'PUT',
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(data)
+        });
 
-/****************************************************************************************************** This is a Normal  JS  *********************************************************************/
+        let apiData= await res.json();
+        if(apiData !==null){
+            //console.log(apiData);
+            removeDataToJson(index);
+            addressListData.push(apiData);
+            //console.log(addressListData);
+            localStorage.setItem("addressListData",JSON.stringify(addressListData));
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
+async function DeleteAddress(addressId, index){ // this api will delete the selected address on addresslist also delete form local host to;
+    try {
+        let res= await fetch(`http://localhost:8088/Delete/${addressId}`,{
+            method: 'DELETE',
+            headers:{
+                "Content-Type":"application/json"
+            }
+        });
+        let data= await res.json();
+        if(data !== null){
+            removeDataToJson(index);
+            //location.reload();
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+//****************************************************************************************************** This is a Normal  JS  *********************************************************************/
 
 function Addresses(addresses){ // this method create addreses list tables 
     //console.log(addresses);
-    addresses.forEach(i=>{
+    addresses.forEach((i, index) =>{
+
+        let addressDivBlock= document.createElement("div");// this div hold the address block;
+        addressDivBlock.setAttribute("class","addressBolckManager");
 
         let div_but= document.createElement("div");
 
@@ -92,14 +126,60 @@ function Addresses(addresses){ // this method create addreses list tables
 
         let editPop= document.createElement("p");
         editPop.innerText= "Edit";
+        editPop.addEventListener("click", function(){
+            let form= document.querySelector("#addressFrom")
+
+            form.style.display="block";
+            form.style.marginTop= "2%"
+            let edit_div_hide=document.querySelectorAll(".addressBolckManager")
+            edit_div_hide[index].style.display= "none"; // this will hide the current edit block
+
+            // here we puting value in form to edit 
+
+            form.name.value= i.aname;
+            form.phone.value= i.aphoneNum;
+            form.pincode.value= i.pinCode;
+            form.locality.value= i.locality;
+            form.areaAndStreet.value= i.streetAddress;
+            form.city.value= i.city;
+            form.state.value= i.state;
+            form.landmark.value= i.landmark;
+            form.alternatePhone.value= i.aphoneNumAlternative;
+            form.locationTypeTag.value= i.addressType;
+
+            document.querySelector("#titalAddress").innerText= "EDIT ADDRESS";
+            document.querySelector("#button-maSave").onclick=(event)=>{//  this call back function help to the update API to do process  I puted call back function in " save button" ;
+                let obj= {
+                    "addressId": i.addressId,
+                    "aname": form.name.value,
+                    "aphoneNum": form.phone.value,
+                    "pinCode": form.pincode.value,
+                    "locality": form.locality.value,
+                    "streetAddress": form.areaAndStreet.value,
+                    "city": form.city.value,
+                    "state": form.state.value,
+                    "country": "India",
+                    "landmark": form.landmark.value,
+                    "aphoneNumAlternative": form.alternatePhone.value,
+                    "addressType": form.locationTypeTag.value, 
+                }
+                //event.preventDefault();
+                EditAddress(obj, index); // there we pass 2 value one is object (for updating) and second is index ( for remove old addresss  by passing index ) this is for current address list index
+            }
+
+        });
+
         let deletePop= document.createElement("p");
         deletePop.innerText= "Delete";
+        deletePop.onclick=(event)=>{// this help to delete the address
+             DeleteAddress(i.addressId, index);
+        }; 
 
-        popDeleteEdit.append(editPop,deletePop);
+        popDeleteEdit.append(editPop, deletePop);
 
 
+    //888888888888888888888888888888888888888888888888    END This Section    888888888888888888888888888888888888888888888888888888888888888888\\
 
-    //888888888888888888888888888888888888888888888888    END THis Section    888888888888888888888888888888888888888888888888888888888888888888\\
         div_but.append(button, popDots);
         div_but.setAttribute("class", "diff_but_dot");
 
@@ -110,26 +190,62 @@ function Addresses(addresses){ // this method create addreses list tables
         let dtag= document.createElement("p");
         dtag.innerText= i.streetAddress +" "+ i.locality +" "+ i.city +" "+ i.state +" - "+i.pinCode;
         
-        //let appendDiv= document.getElementById("manage_Addresses");
-        addresslist_append.append(div_but, ntag, dtag) ;
+        addressDivBlock.append(div_but, ntag, dtag);
+
+        addresslist_append.append(addressDivBlock) ;
 
     });
 
 };
+
+
+
 function ManageDivAddressOpen(){
-    let md= document.querySelectorAll(".manage_Address_div");
-    for(let i=0; i<md.length; i++){
-        md[i].style.display="none"
+    let md= document.querySelector(".manage_Address_div");
+    md.style.display="none"
+    
+    let form= document.querySelector("#addressFrom")
+    form.style.display="block";
+
+    document.querySelector("#titalAddress").innerText= "ADD A NEW ADDRESS";
+
+
+    document.querySelector("#button-maSave").onclick=(event)=>{
+        let obj= {
+            "aname": form.name.value,
+            "aphoneNum": form.phone.value,
+            "pinCode": form.pincode.value,
+            "locality": form.locality.value,
+            "streetAddress": form.areaAndStreet.value,
+            "city": form.city.value,
+            "state": form.state.value,
+            "country": "India",
+            "landmark": form.landmark.value,
+            "aphoneNumAlternative": form.alternatePhone.value,
+            "addressType": form.locationTypeTag.value, 
+        }
+        //event.preventDefault();
+        postAddress(obj);
     }
-   
-    let fd= document.querySelector("#addressFrom")
-    fd.style.display="block";
     
 }
+
 function ManageDivAddressCancel(){
     document.querySelector(".manage_Address_div").style.display="block";
     document.querySelector("#addressFrom").style.display="none";
+    let edit_div_hide=document.querySelectorAll(".addressBolckManager");
+            
+    edit_div_hide.forEach(i =>{
+        if(i.style.display=="none"){
+            i.style.display= "block";
+        }
+    });
+    
 
 }
 Addresses(addressListData);
 
+function removeDataToJson(index){  // this fuction help to remove old object and save it in json after done th operation
+    addressListData.splice(index,1)
+    localStorage.setItem("addressListData",JSON.stringify(addressListData));
+}

@@ -28,7 +28,7 @@ async function doLogin(pass,phone){
     async function checkLogin(id){
         let ss=id;
         //console.log(id);
-       try{
+        try{
             let res=await fetch("http://localhost:8088/LogIn/ActiveStatus/%7Bid%7D?cusID="+ss,{ //this api store key for example ramdom generator string value 
                 method:'GET',
                 headers:{
@@ -52,7 +52,7 @@ async function doLogin(pass,phone){
 document.querySelector("#button-86").addEventListener("click",function(event){
     //console.log("working");
     event.preventDefault();
-     let phone=document.getElementById("username");
+    let phone=document.getElementById("username");
     let pass=document.getElementById("password");
     if(phone.value=="" || pass.value=="" ){
         alert("Fill all the Inputs!!");

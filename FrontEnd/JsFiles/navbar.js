@@ -124,7 +124,7 @@ if(token==null){//this use for check if user login or not this is do its hide lo
         hideloginbar.style.display="none"; //this will help to hide login or signup section if user is already login
         let page= window.location.pathname;
         let pageindex= page.substring(page.lastIndexOf('/'));
-        if(pageindex="myProfile.html"){//this
+        if(pageindex=="myProfile.html"){//this
             display(myProfiledata);
         }
     }

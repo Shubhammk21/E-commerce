@@ -257,15 +257,19 @@ option:disabled {
 
 }
 #AddressList{
-    border: .1px solid rgb(170, 170, 170);
+    /* border: .1px solid rgb(170, 170, 170); */
+    margin-top: 2%;
+}
+.addressBolckManager{
     width: 50%;
     margin: auto;
     padding: 1% 1.5%;
     transition: 500ms;
     border-radius: 10px;
-    margin-top: 2%;
     letter-spacing: 0;
+    border: .1px solid rgb(170, 170, 170);
 }
+
 .diff_but_dot{
     display: flex;
     justify-content: space-between;
