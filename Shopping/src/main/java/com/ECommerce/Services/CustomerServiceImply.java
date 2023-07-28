@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 import com.ECommerce.DTO.LogInDTO;
-import com.ECommerce.Modules.Admin;
 import com.ECommerce.Modules.CustomerActive;
 import com.ECommerce.Modules.LogInHistory;
 import net.bytebuddy.utility.RandomString;
@@ -21,7 +20,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 @Service
-public class ImCustomerService implements CustomerService{
+public class CustomerServiceImply implements CustomerService{
 
 
     @Autowired
