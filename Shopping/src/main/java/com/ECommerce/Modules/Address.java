@@ -19,7 +19,6 @@ import java.util.Objects;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "demoAddress_sql")

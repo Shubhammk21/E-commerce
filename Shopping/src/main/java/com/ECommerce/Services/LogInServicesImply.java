@@ -16,12 +16,11 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ImLogInServices implements LogInServices{
+public class LogInServicesImply implements LogInServices{
     @Autowired
     private CustomerRepo cDao;
 

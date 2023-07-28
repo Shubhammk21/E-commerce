@@ -6,15 +6,13 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import java.awt.*;
-import java.sql.Blob;
+import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -23,14 +21,14 @@ import java.util.Set;
 @AllArgsConstructor
 public class Products {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "Product_sql")
-    @GenericGenerator(name = "demo_sql",strategy = "com.ECommerce.Modules.StringSequenceGenerator",parameters = {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "demoProduct_sql")
+    @GenericGenerator(name = "demoProduct_sql",strategy = "com.ECommerce.Modules.StringSequenceGenerator",parameters = {
             @Parameter(name = StringSequenceGenerator.INCREMENT_PARAM,value="1"),
             @Parameter(name = StringSequenceGenerator.VALUE_PREFIX_PARAMETER, value = "PID_"),
             @Parameter(name = StringSequenceGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d")
 
     })
-    private int productId;
+    private String productId;
 
     //@OneToMany(cascade = CascadeType.ALL)
     @OneToMany(cascade = CascadeType.ALL)
@@ -39,6 +37,7 @@ public class Products {
     @NotNull(message = "Enter Product Name")
     private String productName;
 
+    private LocalDateTime addDateTime;
     @NotNull(message = "Enter Product Price")
     private double marketPrice;
     @NotNull(message = "Enter Product Price")
@@ -51,20 +50,29 @@ public class Products {
     private String specification;
 
     @NotNull(message = "Enter Product Manufacturer")
-    private String manufacturer;
+    private String brand;
 
     @NotNull(message = "Enter Product Quantity")
     private Integer quantity;
 
-    @NotNull(message = "Enter Product Price")
-    private String Type;
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     private Category category;
 
-    @ManyToOne
-    private Seller seller;
+//    @ManyToOne
+//    @JsonIgnore
+//    private Seller seller;
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Products products)) return false;
+        return Double.compare(products.getMarketPrice(), getMarketPrice()) == 0 && Double.compare(products.getSellPrice(), getSellPrice()) == 0 && Objects.equals(getImages(), products.getImages()) && Objects.equals(getProductName(), products.getProductName()) && Objects.equals(getDimension(), products.getDimension()) && Objects.equals(getSpecification(), products.getSpecification()) && Objects.equals(getBrand(), products.getBrand()) && Objects.equals(getQuantity(), products.getQuantity()) && Objects.equals(getCategory(), products.getCategory());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getImages(), getProductName(), getMarketPrice(), getSellPrice(), getDimension(), getSpecification(), getBrand(), getQuantity(), getCategory());
+    }
 }

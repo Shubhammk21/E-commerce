@@ -50,7 +50,7 @@ public class Seller {
     @NotNull(message = "country can not be null")
     private String country;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "seller")
-    private List<Products> products;
+//    @OneToMany(cascade = CascadeType.ALL,mappedBy = "seller")
+//    private List<Products> products;
 
 }
