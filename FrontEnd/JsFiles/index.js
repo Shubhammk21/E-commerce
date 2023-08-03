@@ -23,4 +23,3 @@ let SearchData =async ()=>{
 }
 let products= document.getElementById("product");
 
-

@@ -2,6 +2,7 @@ package com.ECommerce.Controllers;
 
 import com.ECommerce.Exception.CategoryException;
 import com.ECommerce.Exception.ProductException;
+import com.ECommerce.Modules.Category;
 import com.ECommerce.Modules.Images;
 import com.ECommerce.Modules.Products;
 import com.ECommerce.Services.ProductServices;
@@ -74,6 +75,14 @@ public class ProductsController {
 
         return new ResponseEntity<List<Products>>(productsList, HttpStatus.OK);
 
+    }
+
+    @PostMapping("/Products/add/category")
+    public ResponseEntity<Category> addCategory(@Valid @RequestBody Category category) throws CategoryException{
+
+        Category cat= ps.addCategory(category);
+
+        return new ResponseEntity<Category>(cat,HttpStatus.ACCEPTED);
     }
 
 }

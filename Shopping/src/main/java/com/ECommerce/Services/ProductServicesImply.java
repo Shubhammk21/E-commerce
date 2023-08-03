@@ -73,7 +73,7 @@ public class ProductServicesImply implements ProductServices{
         if(oCat.isEmpty()){
             throw new CategoryException("§◙→ Category Not Match ←◙§");
         }else {
-            List<Products>productsList= oCat.get().getProductsList();
+            List<Products>productsList= pr.findByCategory(oCat.get());
             if (productsList.size()==0){
                 throw new ProductException("§◙→ Product Not found ←◙§");
             }else{
@@ -102,5 +102,16 @@ public class ProductServicesImply implements ProductServices{
         }else{
             return productsList;
         }
+    }
+
+    @Override
+    public Category addCategory(Category category) throws CategoryException {
+        Optional<Category> optionalCategory= cr.findByCategoryName(category.getCategoryName());
+        if(optionalCategory.isPresent()){
+            throw new CategoryException("§◙→ Category already present ←◙§");
+        }else{
+            return cr.save(category);
+        }
+
     }
 }

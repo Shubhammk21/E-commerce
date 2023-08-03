@@ -17,5 +17,7 @@ public interface ProductRepo extends JpaRepository<Products,String> {
     public List<Products> searchByBrand(@Param("m")String g);
     @Query("select p from Products p where sellPrice <= :m ")
     public List<Products> priceLessThen(@Param("m")Double g);
+
+    public List<Products> findByCategory(Category category);
    
 }

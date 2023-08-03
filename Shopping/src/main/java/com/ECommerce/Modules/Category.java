@@ -1,5 +1,7 @@
 package com.ECommerce.Modules;
 
+import com.ECommerce.DTO.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +19,9 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int categoryID;
+
+    @NotNull(message = "Category type not null")
+    private Gender categoryType;
     @NotNull
     @NotBlank
     private String categoryName;
@@ -25,8 +30,9 @@ public class Category {
     @NotBlank
     private String active;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
-    //@JoinColumn(name = "categoryID")
-    private List<Products> productsList;
+//    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
+//    @JsonIgnore
+//    private List<Products> productsList;
+
 
 }

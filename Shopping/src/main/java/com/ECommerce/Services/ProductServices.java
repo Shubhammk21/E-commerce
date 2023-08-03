@@ -2,6 +2,7 @@ package com.ECommerce.Services;
 
 import com.ECommerce.Exception.CategoryException;
 import com.ECommerce.Exception.ProductException;
+import com.ECommerce.Modules.Category;
 import com.ECommerce.Modules.Images;
 import com.ECommerce.Modules.Products;
 
@@ -15,5 +16,6 @@ public interface ProductServices {
     public List<Products> searchByCategory(Integer catId) throws ProductException,CategoryException;
     public List<Products> searchByBrand(String m) throws ProductException;
     public List<Products> searchByPriceLessThan(Double m) throws ProductException;
+    public Category addCategory(Category category) throws CategoryException;
 
 }

@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product</title>
     <link rel="stylesheet" href="/FrontEnd\CssFiles\LogIn.css">
     <link rel="stylesheet" href="/FrontEnd\CssFiles\navbar.css">
-    <link href="//db.onlinewebfonts.com/c/3e13bee6781c476e142a2bca4d9ab99c?family=Kunstler+Script" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="/FrontEnd/CssFiles/Index.css">
+    <link rel="stylesheet" href="/FrontEnd\CssFiles\Products.css">
 </head>
 <body>
     <div id="navbar">
@@ -54,54 +52,35 @@
             </div>
         </div>
     </div>
-    <div id="login">
-        <h1 id="logback"><i class="fa-solid fa-circle-arrow-left"></i></h1>
+    <div id="products">
+        <!-- Left Part of Product Page  -->
         <div>
-            <div id="logo">
-                <div>
-                    <h1>StarShopping</h1>
-                    <p>Created by Pooram</p>
-                </div>
-                <div>
-                    <img src="/FrontEnd\Images\clipart1051406.png" alt="">
+            <div>
+                <h3>&#10136; Category</h3>
+                <div id="listCategory">
+                    <!-- list of Category comes with Api -->
                 </div>
             </div>
             <div>
-                <img src="https://www.addictioncenter.com/app/uploads/2020/01/online_shopping_addiction-scaled.jpeg" alt="">
+                <h3>&#10136; Brand</h3>
+                <div id="listBrand">
+                    <!-- list of brands come with API -->
+                </div>
             </div>
             <div>
-                <form>
-                    <label for="username">Phone or Email</label><br />
-                    <input type="text" id="username" placeholder="Enter Phone or Email"><br />
-                    <label for="username">Password</label><br />
-                    <input type="text" id="password" placeholder="Enter Password"><br />
-                    <button id="button-86">LogIn</button>
-                </form>
+                <h3>&#10136; Price</h3>
+                <div id="listPrice">
+                    <div>
+                        <input type="text" id="filterByPrice" placeholder="less than...." oninput="debounce(priceLessThan,1000)">
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <!-- Right Part of Product Page -->
+        <div>
+            <div id="resultProducts"> 
             </div>
         </div>
     </div>
-    <main id="home">
-        <div>
-            <div></div>
-            <div><h1>Welcome to Star Shopping!!</h1>
-            <p>Use get100 to get $10 instant Discount<br> and many more offers<br> are waiting...</p></div>
-        </div>
-        <div>
-            <div>
-                <h2>Explore Products!!</h2>
-                <div><button onclick="goProduct()">Browser</button></div> 
-            </div>
-            <div>
-                <h2>CheckOut Cart!!</h2>
-                <div><button onclick="goCart()">Browser</button></div>
-            </div>
-        </div>
-    </main>
 </body>
 </html>
-<script src="/FrontEnd\JsFiles\LogIn.js"></script>
-<!-- <script src="/FrontEnd/JsFiles/ManageAddress.js"></script> -->
-<script src="/FrontEnd\JsFiles\index.js"></script>
-<script src="/FrontEnd\JsFiles\navbar.js"></script>
-<script src="https://kit.fontawesome.com/9018df668b.js" crossorigin="anonymous"></script>
-

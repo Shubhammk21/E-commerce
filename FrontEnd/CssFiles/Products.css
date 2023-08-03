@@ -1,0 +1,75 @@
+#products{
+    display: block;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 2%;
+}
+#products>div:nth-child(1){
+    background-color: #333;
+    color: white;
+    width: 25%;
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+}
+#products>div:nth-child(1)>div{
+    margin: 20px auto;
+    width: 70%;
+}
+#products>div:nth-child(1)>div>div{
+    margin-left: 20px;
+}
+#products>div:nth-child(1)>div>div>div{
+    margin: 10px 0px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+#listPrice>div>input{
+    width: 50%;
+}
+#products>div:nth-child(2){
+    width: 75%;
+}
+#resultProducts{
+    display: grid;
+    margin: 25px 30px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+#resultProducts>div{
+    padding: 20px 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    transition: transform .1s ease-in-out;
+}
+#resultProducts>div:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: transform .8s ease-in-out;
+    transform: scale(1.1);
+}
+#resultProducts>div>p{
+    color: #818181;
+}
+#resultProducts>div>p:nth-child(3){
+    color: #000000;
+    font-size: 1.1rem;
+}
+#resultProducts>div>button{
+    font-size: 1.1rem;
+    padding: 5px 0px;
+    width: 100%;
+    background-color: #333;
+    color: white;
+}
+#resultProducts>div>button:hover{
+    background-color: rgb(94, 94, 94);
+    cursor: pointer;
+}
+#resultProducts>div>div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#resultProducts>div>div>img{
+    height: 200px;
+}

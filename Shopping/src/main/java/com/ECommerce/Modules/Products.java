@@ -32,7 +32,6 @@ public class Products {
 
     //@OneToMany(cascade = CascadeType.ALL)
     @OneToMany(cascade = CascadeType.ALL)
-    @JsonIgnore
     private Set<Images> images=new HashSet<>();
     @NotNull(message = "Enter Product Name")
     private String productName;
@@ -57,6 +56,7 @@ public class Products {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
+    @JoinColumn(name = "categoryId")
     private Category category;
 
 //    @ManyToOne
