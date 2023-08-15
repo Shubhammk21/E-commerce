@@ -73,3 +73,73 @@
 #resultProducts>div>div>img{
     height: 200px;
 }
+
+.desktop-navbar {
+    display: block;
+    float: left;
+    line-height: 80px;
+    height: 80px;
+    margin: 0 0 0 3.5%;
+}
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+    display: block;
+}
+*, :after, :before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+nav {
+    display: block;
+}
+.desktop-bound {
+    margin: auto;
+    min-width: 980px;
+    line-height: 80px;
+}
+.desktop-container {
+    color: #fff;
+    top: 0;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    -webkit-box-shadow: 0 4px 12px 0 rgba(0,0,0,.05);
+    box-shadow: 0 4px 12px 0 rgba(0,0,0,.05);
+    background-color: #fff;
+}
+body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: Assistant,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+style attribute {
+    --ripple-color-floating-bell: #1D85FC;
+}
+
+:root {
+    --widget-height: 550px;
+    --widget-height-1366: 500px;
+    --widget-height-galaxy-fold: 360px;
+    --direction: normal;
+    --transform-origin-top-left: 0% 0;
+    --transform-origin-top-right: 100% 0%;
+    --transform-origin-bottom-left: 0% 100%;
+    --transform-origin-bottom-right: 100% 100%;
+    --ripple-color-floating-bell: #1194FF;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+*, :after, :before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+*, :after, :before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}

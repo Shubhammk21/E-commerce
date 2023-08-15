@@ -28,6 +28,8 @@ public class Category {
 
     @NotNull
     @NotBlank
+    private String subCategory;
+
     private String active;
 
 //    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")

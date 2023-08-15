@@ -9,45 +9,370 @@
     <link rel="stylesheet" href="/FrontEnd\CssFiles\Products.css">
 </head>
 <body>
-    <div id="navbar">
-        <div class="flexnav">
-            <div class="navlogo">
-                <div>
-                    <h1>StarShopping</h1>
-                    <p>Created by Pooram</p>
+    <div id="main_navbar">
+        <div id="navbar">
+            <div class="flexnav">
+                <div class="navlogo">
+                    <div>
+                        <h1>StarShopping</h1>
+                        <p>Created by Pooram</p>
+                    </div>
+                    <div>
+                        <img src="/FrontEnd\Images\clipart1051406.png" alt="">
+                    </div>
                 </div>
-                <div>
-                    <img src="/FrontEnd\Images\clipart1051406.png" alt="">
+                <div id="topbar">
+                    <input type="search" placeholder="Search Products" id="ivalue">
+                    <input type="button" value="Search" id="input" onclick="SearchData()">
                 </div>
             </div>
-            <div id="topbar">
-                <input type="search" placeholder="Search Products" id="ivalue">
-                <input type="button" value="Search" id="input" onclick="SearchData()">
+            <div id="navicon">
+                <div id="home">
+                    <p class="text"><a href="index.html">Home</a></p>
+                </div>
+                <div id="category">
+                    <p class="text">Category</p>
+                    <div class="drop"></div>
+                </div>
+                <div id="profile">
+                    <p class="text">Profile</p>
+                    <div class="drop">
+                        <p onclick="ViewProfile()"><a href="myProfile.html"></a> View Profile</p>
+                        <p><a href="ChangePassword.html">Change Password</a></p>
+                        <p onclick="LogInHistory()">LogIn History</p>
+                        <p onclick="addressList()"><a href="ManageAddress.html">Manage Addresses</a></p>
+                        <p onclick="LogOut()" id="logout"> Log Out</p>
+                    </div>
+                </div>
+                <div id="loginnav">
+                    <p class="text">LogIn/SignUp</p>
+                    <div class="drop">
+                        <p id="loginfun">LogIn</p>
+                        <p id="signupfun">SignUp</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="navicon">
-            <div id="home">
-                <p class="text"><a href="index.html">Home</a></p>
-            </div>
-            <div id="category">
-                <p class="text">Category</p>
-                <div class="drop"></div>
-            </div>
-            <div id="profile">
-                <p class="text">Profile</p>
-                <div class="drop">
-                    <p onclick="ViewProfile()"><a href="myProfile.html"></a> View Profile</p>
-                    <p><a href="ChangePassword.html">Change Password</a></p>
-                    <p onclick="LogInHistory()">LogIn History</p>
-                    <p onclick="addressList()"><a href="ManageAddress.html">Manage Addresses</a></p>
-                    <p onclick="LogOut()" id="logout"> Log Out</p>
+        <div id="category_div">
+            <div id="mens">
+                <a href="" style="border-bottom-color:#ee5f73" class="cate_text">Mens</a>
+                <div class="cate_drop">
+                    <div class="cate_mens">
+                        <p class="cate_text2">Topwear</p>
+                        <div class="cate_drop2">
+                            <div>
+                                <p>T-Shirts</p>
+                                <p>Casual Shirts</p>
+                                <p>Formal Shirts</p>
+                                <p>Sweatshirts</p>
+                                <p>Sweaters</p>
+                                <p>Jackets</p>
+                                <p>Blazers & Coats</p>
+                                <p>Suits</p>
+                                <p>Rain Jackets</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Bottomwear</p>
+                        <div class="cate_drop2">
+                            <div>
+                                <p>Jeans</p>
+                                <p>Casual Trousers</p>
+                                <p>Formal Trousers</p>
+                                <p>Shorts </p>
+                                <p>Track Pants & Joggers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Footwear</p>
+                        <div class="cate_drop2">
+                            <div>
+                                <p>Casual Shoes</p>
+                                <p>Sports Shoes</p>
+                                <p>Formal Shoes</p>
+                                <p>Sneakers</p>
+                                <p>Sandals & Floaters</p>
+                                <p>Flip Flops</p>
+                                <p>Socks</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Sports & Active Wear</p>
+                        <div class="cate_drop2">
+                            <div>
+                                <p>Sports Shoes</p>
+                                <p>Sports Sandals</p>
+                                <p>Active T-Shirts</p>
+                                <p>Track Pants &Shorts</p>
+                                <p>Tracksuits</p>
+                                <p>Jackets & Sweatshirts</p>
+                                <p>Sports Accessories</p>
+                                <p>Swimwear</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Fashion Accessories</p>
+                        <div class="cate_drop2">
+                            <div>
+                                <p>Wallets</p>
+                                <p>Belts</p>
+                                <p>Perfumes & Body Mists</p>
+                                <p>Trimmers</p>
+                                <p>Deodorants</p>
+                                <p>Ties, Cufflinks & Pocket Squares</p>
+                                <p>Accessory Gift Sets</p>
+                                <p>Caps & Hats</p>
+                                <p>Mufflers, Scarves & Gloves</p>
+                                <p>Phone Cases</p>
+                                <p>Rings & Wristwear</p>
+                                <p>Helmets</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Indian & Festive Wear</p>
+                        <div class="cate_drop2">
+                            <div>
+                                <p>Kurtas & Kurta Sets</p>
+                                <p>Sherwanis</p>
+                                <p>Nehru Jackets </p>
+                                <p>Dhotis</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Innerwear & Sleepwear</p>
+                        <div class="cate_drop2">
+                            <div>
+                                <p>Briefs & Trunks</p>
+                                <p>Boxers</p>
+                                <p>Vests </p>
+                                <p>Sleepwear & Loungewear</p>
+                                <p>Thermals</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Sunglasses & Frames</p>
+                    </div>
                 </div>
             </div>
-            <div id="loginnav">
-                <p class="text">LogIn/SignUp</p>
-                <div class="drop">
-                    <p id="loginfun">LogIn</p>
-                    <p id="signupfun">SignUp</p>
+            <div id="women">
+                <a href=""  class="cate_text">Women</a>
+                <div class="cate_drop">
+                    <div class="cate_mens">
+                        <p class="cate_text2">Indian & Fusion Wear</p>
+                        <div class="cate_drop2">
+                            <div> 
+                                <p>Kurtas & Suits</p>
+                                <p>Kurtis, Tunics & Tops</p>
+                                <p>Sarees</p>
+                                <p>Ethnic Wear</p>
+                                <p>Leggings, Salwars & Churidars</p>
+                                <p>Skirts & Palazzos</p>
+                                <p>Dress Materials</p>
+                                <p>Lehenga Cholis</p>
+                                <p>Dupattas & Shawls</p>
+                                <p>Jackets</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Western Wear</p>
+                        <div class="cate_drop2">
+                            <div>   
+                                <p>Dresses </p>
+                                <p>Tops</p>
+                                <p>Tshirts</p>
+                                <p>Jeans</p>
+                                <p>Trousers & Capris</p>
+                                <p>Shorts & Skirts</p>
+                                <p>Co-ords</p>
+                                <p>Playsuits</p>
+                                <p>Jumpsuits</p>
+                                <p>Shrugs</p>
+                                <p>Sweaters & Sweatshirts</p>
+                                <p>Jackets & Coats</p>
+                                <p>Blazers & Waistcoats</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Maternity</p>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Sunglasses & Frames</p>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Footwear</p>
+                        <div class="cate_drop2">
+                            <div>    
+                                <p>Flats</p> 
+                                <p>Casual Shoes</p>
+                                <p>Heels</p>
+                                <p>Boots </p>
+                                <p>Sports Shoes & Floaters</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Sports & Active Wear</p>
+                        <div class="cate_drop2">
+                            <div>                                
+                                <p>Clothing</p>
+                                <p>Footwear</p>
+                                <p>Sports Accessories</p>
+                                <p>Sports Equipment</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Lingerie & Sleepwear</p>
+                        <div class="cate_drop2">
+                            <div>
+                                <p>Bra</p> 
+                                <p>Briefs</p> 
+                                <p>Shapewear</p>
+                                <p>Sleepwear & Loungewear</p>
+                                <p>Swimwear</p>
+                                <p>Camisoles & Thermals</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Beauty & Personal Care</p>
+                        <div class="cate_drop2">
+                            <div> 
+                                <p>Makeup</p>
+                                <p>Skincare</p>
+                                <p>Premium Beauty</p>
+                                <p>Lipsticks</p>
+                                <p>Fragrances</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Jewellery</p>
+                        <div class="cate_drop2">
+                            <div>                        
+                                <p>Fashion Jewellery</p>
+                                <p>Fine Jewellery</p>
+                                <p>Earrings</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="kids">
+                <a href="" class="cate_text">Kids</a>
+                <div class="cate_drop">
+                    <div class="cate_mens">
+                        <p class="cate_text2">Boys Clothing</p>
+                        <div class="cate_drop2">
+                            <div> 
+                                <p>T-Shirts</p>
+                                <p>Shirts</p>
+                                <p>Shorts</p>
+                                <p>Jeans</p>
+                                <p>Trousers</p>
+                                <p>Clothing Sets</p>
+                                <p>Ethnic Wear</p>
+                                <p>Track Pants & Pyjamas</p>
+                                <p>Jacket, Sweater & Sweatshirts</p>
+                                <p>Party Wear</p>
+                                <p>Innerwear & Thermals</p>
+                                <p>Nightwear & Loungewear</p>
+                                <p>Value Packs</p>                        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Girls Clothing</p>
+                        <div class="cate_drop2">
+                            <div>     
+                                <p>Dresses</p>
+                                <p>Tops</p>
+                                <p>T-Shirts</p>
+                                <p>Clothing Sets</p>
+                                <p>Lehenga choli</p>
+                                <p>Kurta Sets</p>
+                                <p>Party wear</p>
+                                <p>Dungarees & Jumpsuits</p>
+                                <p>Skirts & shorts</p>
+                                <p>Tights & Leggings</p>
+                                <p>Jeans, Trousers & Capris</p>
+                                <p>Jacket, Sweater & Sweatshirts</p>
+                                <p>Innerwear & Thermals</p>
+                                <p>Nightwear & Loungewear</p>
+                                <p>Value Packs</p>                       
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Footwear</p>
+                        <div class="cate_drop2">
+                            <div>                               
+                                <p>Casual Shoes</p>
+                                <p>Flipflops</p>
+                                <p>Sports Shoes</p>
+                                <p>Flats</p>
+                                <p>Sandals</p>
+                                <p>Heels</p>
+                                <p>School Shoes</p>
+                                <p>Socks</p>                        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Toys & Games</p>
+                        <div class="cate_drop2">
+                            <div>                               
+                                <p>Learning & Development</p>
+                                <p>Activity Toys</p>
+                                <p>Soft Toys</p>
+                                <p>Action Figure / Play set </p>                       
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Infants</p>
+                        <div class="cate_drop2">
+                            <div>                               
+                                <p>Bodysuits</p>
+                                <p>Rompers & Sleepsuits</p>
+                                <p>Clothing Sets</p>
+                                <p>Tshirts & Tops</p>
+                                <p>Dresses</p>
+                                <p>Bottom wear</p>
+                                <p>Winter Wear</p>
+                                <p>Innerwear & Sleepwear</p>
+                                <p>Infant Care</p>                        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Home & Bath</p>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Personal Care</p>
+                    </div>
+                    <div class="cate_mens">
+                        <p class="cate_text2">Kids Accessories</p>
+                        <div class="cate_drop2">
+                            <div>                               
+                                <p>Bags & Backpacks</p>
+                                <p>Watches</p>
+                                <p>Jewellery & Hair accessory</p>
+                                <p>Sunglasses</p>
+                                <p>Masks & Protective Gears</p>
+                                <p>Caps & Hats</p>                       
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

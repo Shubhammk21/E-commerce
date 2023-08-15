@@ -112,7 +112,7 @@ async function ChangePassword(newPassword){  //this method used for changing pas
 let logindetails= document.querySelector("#profile>div"); 
 let hideloginbar= document.querySelector("#loginnav>div");
 
-if(token==null){//this use for check if user login or not this is do its hide login user function such as view profile and logout
+if(token==null){  //this use for check if user login or not this is do its hide login user function such as view profile and logout
     logindetails.style.display="none";
     hideloginbar.style.display="block"; // this will help to unhide login or signup section if user is not login
 }else{
