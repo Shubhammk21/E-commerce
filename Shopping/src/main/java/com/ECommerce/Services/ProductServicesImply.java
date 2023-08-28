@@ -104,15 +104,5 @@ public class ProductServicesImply implements ProductServices{
         }
     }
 
-    @Override
-    public Category addCategory(Category category) throws CategoryException {
-        Optional<Category> optionalCategory= cr.findByCategoryNameAndSub(category.getCategoryName(), category.getSubCategory(),category.getCategoryType());
-        if(optionalCategory.isPresent()){
-            throw new CategoryException("§◙→ Category already present ←◙§");
-        }else{
-            category.setActive("Active");
-            return cr.save(category);
-        }
 
-    }
 }

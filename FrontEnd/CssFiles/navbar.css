@@ -4,6 +4,7 @@
     width: 100%;
     top: 0;
     margin-top: -10px;
+    
 }
 #navbar{
     display: flex;
@@ -143,6 +144,7 @@ input[type="button"]:hover{
     align-items: center;
     background-color: white;
     width: 100%;
+    box-shadow: rgb(199, 209, 212) 10px 10px 10px;
     
 }
 #mens{
@@ -178,7 +180,7 @@ input[type="button"]:hover{
     background-color: teal;
     color: white;
 }
-.cate_text{
+.cate_text,.cate_text2{
     font-size: inherit;
 }
 
@@ -187,14 +189,14 @@ input[type="button"]:hover{
     width: 200px;
     background-color: white;
     left: 70px;
-    top: 0;
+    /* top: 0; */
     margin-left: 120px;
     box-shadow: rgba(100, 100, 111, 0.5) 0px 10px 10px 10px;
     opacity: 0;
     pointer-events: none;
     border-radius: 5px;
     transition: opacity 550ms ease-in-out,transform 550ms ease-in-out;
-    transform: translateX(-100px);
+    transform: translateY(-100px);
 }
 
 .cate_mens:hover>.cate_text2+.cate_drop2{

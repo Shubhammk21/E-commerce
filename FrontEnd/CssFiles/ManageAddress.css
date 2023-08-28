@@ -235,7 +235,7 @@ option:disabled {
     position: relative;
     display: block;
 }
-#addressFrom{
+#addressFrom,#addProductFrom{
     transition: 500ms;
     display: none;
     top: 110%;

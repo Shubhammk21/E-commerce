@@ -77,12 +77,6 @@ public class ProductsController {
 
     }
 
-    @PostMapping("/Products/add/category")
-    public ResponseEntity<Category> addCategory(@Valid @RequestBody Category category) throws CategoryException{
 
-        Category cat= ps.addCategory(category);
-
-        return new ResponseEntity<Category>(cat,HttpStatus.ACCEPTED);
-    }
 
 }

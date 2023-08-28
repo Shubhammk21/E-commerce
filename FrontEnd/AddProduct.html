@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="/FrontEnd\CssFiles\ManageAddress.css">
+    <link rel="stylesheet" href="/FrontEnd\CssFiles\navbar.css">
+    <link rel="stylesheet" href="/FrontEnd/CssFiles/AddProduct.css">
+</head>
+<body>
+    <div id="addProStyle"></div>
+    <div>
+        <div>
+            <form id="addProductFrom" style="display: block;">
+                <span id="titalAddress" style="text-align: start; font-weight: 630;">ADD A NEW PRODUCT</span>
+                <div class="ma_2_row">
+                    <div class="ma_2_colums">
+                        <input type="text" name="name" required="" autocomplete="name" tabindex="1" value="" fdprocessedid="oqysdc">
+                        <label for="name" >Product Name</label>
+                    </div>
+                    <div class="ma_2_colums">
+                        <input type="text" name="dimension" required="" maxlength="10" autocomplete="tel" tabindex="2" value="" fdprocessedid="gvfy3f">
+                        <label for="dimension">Dimension</label>
+                    </div>
+                    <div class="ma_2_colums">
+                        <input type="text"  name="marketPrice" required="" maxlength="6" autocomplete="postal-code" tabindex="3" value="" fdprocessedid="7btp9m">
+                        <label for="marketPrice" >Market Price</label>
+                    </div>
+                    <div class="ma_2_colums">
+                        <input type="text" required="" name="sellPrice" tabindex="4" value="" fdprocessedid="sklshv">
+                        <label for="sellPrice">sell Price</label>
+                    </div>
+                </div>
+                <div class="ma_2_colums">
+                    <textarea class="Area_and_Street" name="specification" rows="4" cols="10" tabindex="5" required="" autocomplete="street-address"></textarea>
+                    <label for="specification">Specification</label>
+                </div>
+                <div class="ma_2_row">
+                    <div class="ma_2_colums">
+                        <input type="text" name="brand" required="" autocomplete="city" value="" >
+                        <label for="brand" >Brand</label>
+                    </div>
+                    <div class="ma_state">
+                        <div class="ma_label_dev">Category</div>
+                        <div class="ma_state_div">
+                            <select onchange="CategoryOption()" id="catTypeSelecter" name="category" required="">
+                                    <option value="" disabled="" selected>--Select Category--</option>
+                                    <option value="Men">Men</option>
+                                    <option value="Women">Women</option>
+                                    <option value="Kids">Kids</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ma_2_colums">
+                        <input type="text" name="quantity" required="" autocomplete="city" value="" >
+                        <label for="quantity" >quantity</label>
+                    </div>
+                    <div class="ma_state">
+                        <div class="ma_label_dev">Sub Category</div>
+                        <div class="ma_state_div">
+                            <select onchange="CategoryNameOption()" id="subCategory" name="subCategory" required="">
+                                    <option value="" disabled="" selected>--Select Sub-category--</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="ma_state">
+                    <div class="ma_label_dev">Category Name</div>
+                    <div class="ma_state_div">
+                        <select id="categoryName" name="categoryName" required="">
+                                <option value="" disabled="" selected>--Select Category Name--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="ma_2_colums">
+                    <textarea class="Area_and_Street" name="Images" rows="4" cols="10" tabindex="5" required="" autocomplete="street-address"></textarea>
+                    <label for="Images">Images</label>
+                </div>
+                <div class="ma_save_cancel">
+                    <button id="button-maSave">Save</button>
+                    <button id="button-maCancel" onclick="">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/FrontEnd/JsFiles/Admin.js"></script>
