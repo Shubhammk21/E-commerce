@@ -12,5 +12,5 @@ public interface CategoryService {
 
     public Category addCategory(Category category) throws CategoryException;
     public Set<String> findAllCategoryName(Gender cat) throws CategoryException;
-    public List<String> findAllSubCategory(String catName) throws CategoryException;
+    public List<Category> findAllSubCategory(Gender cat, String catName) throws CategoryException;
 }

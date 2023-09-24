@@ -32,6 +32,7 @@ public class Products {
 
     //@OneToMany(cascade = CascadeType.ALL)
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="productId")
     private Set<Images> images=new HashSet<>();
     @NotNull(message = "Enter Product Name")
     private String productName;
@@ -46,13 +47,14 @@ public class Products {
     private String dimension;
 
     @NotNull(message = "Enter Product Specification")
+    @Lob
     private String specification;
 
     @NotNull(message = "Enter Product Manufacturer")
     private String brand;
 
     @NotNull(message = "Enter Product Quantity")
-    private Integer quantity;
+    private int quantity;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore

@@ -20,6 +20,7 @@ public interface CategoryRepo extends JpaRepository<Category,Integer> {
     @Query("Select c.categoryName from Category c where c.categoryType= :cat")
     public Set<String> findAllCategoryName(Gender cat);
 
-    @Query("Select c.subCategory from Category c where c.categoryType= :cat and c.categoryName= :catName")
-    public List<String> findAllSubCategory(String catName);
+    @Query("Select c from Category c where c.categoryType= :cat and c.categoryName= :catName")
+    public List<Category> findAllSubCategory(Gender cat, String catName);
+
 }

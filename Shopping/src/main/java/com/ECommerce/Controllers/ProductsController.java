@@ -20,8 +20,8 @@ public class ProductsController {
     @Autowired
     private ProductServices ps;
 
-    @PostMapping("/Add/Product")
-    public ResponseEntity<Products> addProduct(@Valid @RequestBody Products product, @RequestParam(required = false) Integer categoryId)throws ProductException, CategoryException{
+    @PostMapping("/Add/Product/{categoryId}")
+    public ResponseEntity<Products> addProduct(@Valid @RequestBody Products product, @PathVariable int categoryId)throws ProductException, CategoryException{
 
         Products addedProduct= ps.addProduct(product,categoryId);
 

@@ -1,6 +1,7 @@
 package com.ECommerce.Services;
 
 
+import com.ECommerce.DTO.Gender;
 import com.ECommerce.Exception.CategoryException;
 import com.ECommerce.Exception.ProductException;
 import com.ECommerce.Modules.Category;
@@ -25,7 +26,7 @@ public class ProductServicesImply implements ProductServices{
     private CategoryRepo cr;
 
     @Override
-    public Products addProduct(Products product, Integer categoryId) throws ProductException, CategoryException {
+    public Products addProduct(Products product, int categoryId) throws ProductException, CategoryException {
         Optional<Category> opCat= cr.findById(categoryId);
         if(opCat.isEmpty()){
             throw new CategoryException("§◙→ Category Not found ←◙§");
@@ -60,7 +61,7 @@ public class ProductServicesImply implements ProductServices{
     @Override
     public List<Products> searchProducts(String m) throws ProductException {
         String sqlModString= "%"+m+"%";
-        List<Products> productsList= pr.search(sqlModString);
+        List<Products> productsList= pr.topSearchProducts(sqlModString);
         if(productsList.isEmpty()){
             throw new ProductException("§◙→ Product Not found ←◙§");
         }
@@ -97,6 +98,17 @@ public class ProductServicesImply implements ProductServices{
     @Override
     public List<Products> searchByPriceLessThan(Double m) throws ProductException {
         List<Products> productsList= pr.priceLessThen(m);
+        if(productsList.isEmpty()){
+            throw new ProductException("§◙→ Product Not found ←◙§");
+        }else{
+            return productsList;
+        }
+    }
+
+    @Override
+    public List<Products> filterProduct(Gender gender, String catName, String subCat, String brand, int priceOne, int priceTwo) throws ProductException {
+
+        List<Products> productsList= pr.filterProductRepo(gender, catName, subCat, brand, priceOne, priceTwo);
         if(productsList.isEmpty()){
             throw new ProductException("§◙→ Product Not found ←◙§");
         }else{

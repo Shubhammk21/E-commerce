@@ -34,12 +34,12 @@ public class CategoryController {
 
         return new ResponseEntity<Set<String>>(names, HttpStatus.OK);
     }
-    @GetMapping("/Category/list/SubCategory/{catName}")
-    public ResponseEntity<List<String>> listOfAllSubCategory(@PathVariable String catName) throws CategoryException{
+    @GetMapping("/Category/list/SubCategory/{cat}/{catName}")
+    public ResponseEntity<List<Category>> listOfAllSubCategory(@PathVariable Gender cat, @PathVariable String catName) throws CategoryException{
 
-        List<String> names= cs.findAllSubCategory(catName);
+        List<Category> names= cs.findAllSubCategory(cat,catName);
 
-        return new ResponseEntity<List<String>>(names, HttpStatus.OK);
+        return new ResponseEntity<List<Category>>(names, HttpStatus.OK);
     }
 
 }

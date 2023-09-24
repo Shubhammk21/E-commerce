@@ -2,7 +2,7 @@
     display: block;
 }
 #home>div:nth-child(1)>div:nth-child(1){
-    background-image: url("/FrontEnd/Images/background.jpg");
+    /* background-image: url("/FrontEnd/Images/background.jpg"); */
     background-color: #cccccc;
    /* Add the blur effect */
   filter: blur(8px);

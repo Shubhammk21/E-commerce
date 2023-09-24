@@ -41,8 +41,8 @@ public class CategoryServiceImply implements CategoryService {
     }
 
     @Override
-    public List<String> findAllSubCategory(String catName) throws CategoryException {
-        List<String>name= cr.findAllSubCategory(catName);
+    public List<Category> findAllSubCategory(Gender cat, String catName) throws CategoryException {
+        List<Category> name= cr.findAllSubCategory(cat,catName);
         if (name.isEmpty()){
             throw new CategoryException("♣█☻ Check Parameters ☻█♣");
         }else {
