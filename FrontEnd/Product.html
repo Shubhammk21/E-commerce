@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
-    <link rel="stylesheet" href="/FrontEnd\CssFiles\LogIn.css">
+    <!-- <link rel="stylesheet" href="/FrontEnd\CssFiles\LogIn.css"> -->
     <link rel="stylesheet" href="/FrontEnd\CssFiles\navbar.css">
     <link rel="stylesheet" href="/FrontEnd\CssFiles\Products.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
     <div id="main_navbar">
@@ -56,7 +57,7 @@
     </div>
     <div id="category_div">
         <div id="mens" onclick="callApiByCategoryName('Men')">
-            <a href="" style="border-bottom-color:#ee5f73" class="cate_text">Mens</a>
+            <a href="Product.html"  class="cate_text">Men <i class="fa-solid fa-mars" style="color: #008080;"></i></a>
             <div class="cate_drop">
                 <div class="cate_mens">
                     <p class="cate_text2">Topwear</p>
@@ -159,11 +160,12 @@
                 </div>
                 <div class="cate_mens">
                     <p class="cate_text2">Sunglasses & Frames</p>
+                    <div><div></div></div>
                 </div>
             </div>
         </div>
         <div id="women" onclick="callApiByCategoryName('Women')">
-            <a href=""  class="cate_text">Women</a>
+            <a href="Product.html"  class="cate_text">Women <i class="fa-solid fa-venus" style="color: #008080;"></i></i></i></a>
             <div class="cate_drop">
                 <div class="cate_mens">
                     <p class="cate_text2">Indian & Fusion Wear</p>
@@ -204,9 +206,11 @@
                 </div>
                 <div class="cate_mens">
                     <p class="cate_text2">Maternity</p>
+                    <div><div></div></div>
                 </div>
                 <div class="cate_mens">
                     <p class="cate_text2">Sunglasses & Frames</p>
+                    <div><div></div></div>
                 </div>
                 <div class="cate_mens">
                     <p class="cate_text2">Footwear</p>
@@ -269,7 +273,7 @@
             </div>
         </div>
         <div id="kids" onclick="callApiByCategoryName('Kids')">
-            <a href="" class="cate_text">Kids</a>
+            <a href="Product.html" class="cate_text">Kids <i class="fa fa-anchor" aria-hidden="true" style="color: #008080;"></i></a>
             <div class="cate_drop">
                 <div class="cate_mens">
                     <p class="cate_text2">Boys Clothing</p>
@@ -357,9 +361,11 @@
                 </div>
                 <div class="cate_mens">
                     <p class="cate_text2">Home & Bath</p>
+                    <div><div></div></div>
                 </div>
                 <div class="cate_mens">
                     <p class="cate_text2">Personal Care</p>
+                    <div><div></div></div>
                 </div>
                 <div class="cate_mens">
                     <p class="cate_text2">Kids Accessories</p>
@@ -377,7 +383,7 @@
             </div>
         </div>
     </div>
-    <div style="padding: 1% 100%; background-color:rgb(236, 227, 245);"></div>
+    <div style="padding: 1%; background-color:rgb(236, 227, 245);"></div>
     <div id="products">
         <!-- <div ></div> -->
         <!-- Left Part of Product Page  -->
@@ -386,11 +392,13 @@
                 <h3>&#10136; Category</h3>
                 <div id="listCategory">
                     <!-- list of Category comes with Api -->
-                    <div id="mens" onclick="ProductFilCat('mens')">
-                        <p style="font-weight: 600;" class="cate_text">Mens</p>
+                    <div id="mens">
+                        <input type="checkbox" id="menChk">
+                        <p onclick="ProductFilCat('mens')" class="PCate_text"><label for="menChk">Mens</label><input type="checkbox" value="Men" class="productGChk"></p>
                         <div class="productCate_drop">
-                            <div class="cate_mens">
-                                <p class="cate_text2">Topwear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox"  id="mTopwear">
+                                <p class="pCate_text2"><label for="mTopwear"><i></i>Topwear</label><input type="checkbox" value="Topwear"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>T-Shirts</p>
@@ -405,8 +413,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Bottomwear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="mBottomwear" />
+                                <p class="pCate_text2"><label for="mBottomwear"><i></i>Bottomwear</label><input type="checkbox" value="Bottomwear"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Jeans</p>
@@ -417,8 +426,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Footwear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="mFootwear" />
+                                <p class="pCate_text2"><label for="mFootwear"><i></i>Footwear</label><input type="checkbox" value="Footwear"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Casual Shoes</p>
@@ -431,8 +441,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Sports & Active Wear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="mSportsA" />
+                                <p class="pCate_text2"><label for="mSportsA"><i></i>Sports & Active Wear</label><input type="checkbox" value="Sports & Active Wear"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Sports Shoes</p>
@@ -446,8 +457,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Fashion Accessories</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="mFashionA" />
+                                <p class="pCate_text2"><label for="mFashionA"><i></i>Fashion Accessories</label><input type="checkbox" value="Fashion Accessories"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Wallets</p>
@@ -465,8 +477,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Indian & Festive Wear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="mIndianFW" />
+                                <p class="pCate_text2"><label for="mIndianFW"><i></i>Indian & Festive Wear</label><input type="checkbox" value="Indian & Festive Wear"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Kurtas & Kurta Sets</p>
@@ -476,8 +489,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Innerwear & Sleepwear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="mInnerwearS" />
+                                <p class="pCate_text2">
+                                    <label for="mInnerwearS"><i></i>Innerwear & Sleepwear</label>
+                                    <input type="checkbox" value="Innerwear & Sleepwear">
+                                </p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Briefs & Trunks</p>
@@ -488,16 +505,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Sunglasses & Frames</p>
+                            <div class="product_Cat_Gen">
+                                <p class="pCate_text2"><label for="mSunglassesF">Sunglasses & Frames</label><input id="mSunglassesF" type="checkbox" value="Sunglasses & Frames"></p>
                             </div>
                         </div>
                     </div>
-                    <div id="women" onclick="ProductFilCat('women')">
-                        <p class="cate_text" style="font-weight: 600;">Women</p>
+                    <div id="women">
+                        <input type="checkbox" id="womenChk">
+                        <p onclick="ProductFilCat('women')" class="PCate_text"><label for="womenChk">Women</label><input type="checkbox" value="Women" class="productGChk"></p>
                         <div class="productCate_drop">
-                            <div class="cate_mens">
-                                <p class="cate_text2">Indian & Fusion Wear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="wIndianFW">
+                                <p class="pCate_text2"><label for="wIndianFW"><i></i>Indian & Fusion Wear</label><input type="checkbox" value="Indian & Fusion Wear"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Kurtas & Suits</p>
@@ -513,8 +532,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Western Wear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="wWesternW" />
+                                <p class="pCate_text2"><label for="wWesternW"><i></i>Western Wear</label><input type="checkbox" value="Western Wear"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Dresses </p>
@@ -533,14 +553,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Maternity</p>
+                            <div class="product_Cat_Gen">
+                                <p class="pCate_text2"><label for="wMaternity">Maternity</label><input type="checkbox" value="Maternity" id="wMaternity" /></p>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Sunglasses & Frames</p>
+                            <div class="product_Cat_Gen">
+                                <p class="pCate_text2"><label for="wSunglassesF">Sunglasses & Frames</label><input type="checkbox" value="Sunglasses & Frames" id="wSunglassesF"></p>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Footwear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="wFootwear">
+                                <p class="pCate_text2"><label for="wFootwear"><i></i>Footwear</label><input type="checkbox" value="Footwear"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Flats</p>
@@ -551,8 +572,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Sports & Active Wear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="wSportsAW">
+                                <p class="pCate_text2"><label for="wSportsAW"><i></i>Sports & Active Wear</label><input type="checkbox" value="Sports & Active Wear"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Clothing</p>
@@ -562,8 +584,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Lingerie & Sleepwear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="wLingerieS" />
+                                <p class="pCate_text2"><label for="wLingerieS"><i></i>Lingerie & Sleepwear</label><input type="checkbox" value="Lingerie & Sleepwear"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Bra</p>
@@ -575,8 +598,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Beauty & Personal Care</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="wBeautyPC" />
+                                <p class="pCate_text2"><label for="wBeautyPC"><i></i>Beauty & Personal Care</label><input type="checkbox" value="Beauty & Personal Care"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Makeup</p>
@@ -587,8 +611,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Jewellery</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="wJewellery" />
+                                <p class="pCate_text2"><label for="wJewellery"><i></i>Jewellery</label><input type="checkbox" value="Jewellery"></p>
                                 <div class="productCate_drop2">
                                     <div>
                                         <p>Fashion Jewellery</p>
@@ -599,11 +624,13 @@
                             </div>
                         </div>
                     </div>
-                    <div id="kids" onclick="ProductFilCat('kids')">
-                        <p class="cate_text" style="font-weight: 600;">Kids</p>
+                    <div id="kids">
+                        <input type="checkbox" id="kidChk" />
+                        <p onclick="ProductFilCat('kids')" class="PCate_text"><label for="kidChk">Kids</label><input type="checkbox" value="Kids" class="productGChk"></p>
                         <div class="productCate_drop">
-                            <div class="cate_mens">
-                                <p class="cate_text2">Boys Clothing</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="kBoysC" />
+                                <p class="pCate_text2"><label for="kBoysC"><i></i>Boys Clothing</label><input type="checkbox" value="Boys Clothing"></p>
                                 <div class="productCate_drop2">
                                     <div> 
                                         <p>T-Shirts</p>
@@ -622,8 +649,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Girls Clothing</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="kGirlsC" />
+                                <p class="pCate_text2"><label for="kGirlsC"><i></i>Girls Clothing</label><input type="checkbox" value="Girls Clothing"></p>
                                 <div class="productCate_drop2">
                                     <div>     
                                         <p>Dresses</p>
@@ -644,8 +672,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Footwear</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="kFootwear" />
+                                <p class="pCate_text2"><label for="kFootwear"><i></i>Footwear</label><input type="checkbox" value="Footwear"></p>
                                 <div class="productCate_drop2">
                                     <div>                               
                                         <p>Casual Shoes</p>
@@ -659,8 +688,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Toys & Games</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="kToysG" />
+                                <p class="pCate_text2"><label for="kToysG"><i></i>Toys & Games</label><input type="checkbox" value="Toys & Games"></p>
                                 <div class="productCate_drop2">
                                     <div>                               
                                         <p>Learning & Development</p>
@@ -670,8 +700,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Infants</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="kInfants" />
+                                <p class="pCate_text2"><label for="kInfants"><i></i>Infants</label><input type="checkbox" value="Infants"></p>
                                 <div class="productCate_drop2">
                                     <div>                               
                                         <p>Bodysuits</p>
@@ -686,14 +717,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Home & Bath</p>
+                            <div class="product_Cat_Gen">
+                                <p class="pCate_text2"><label for="kHomeB">Home & Bath</label><input type="checkbox" value="Home & Bath" id="kHomeB"></p>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Personal Care</p>
+                            <div class="product_Cat_Gen">
+                                <p class="pCate_text2"><label for="kPersonalC">Personal Care</label><input type="checkbox" value="Personal Care" id="kPersonalC"></p>
                             </div>
-                            <div class="cate_mens">
-                                <p class="cate_text2">Kids Accessories</p>
+                            <div class="product_Cat_Gen">
+                                <input type="checkbox" id="kKidsA" />
+                                <p class="pCate_text2"><label for="kKidsA"><i></i>Kids Accessories</label><input type="checkbox" value="Kids Accessories"></p>
                                 <div class="productCate_drop2">
                                     <div>                               
                                         <p>Bags & Backpacks</p>
@@ -718,10 +750,47 @@
             <div>
                 <h3>&#10136; Price</h3>
                 <div id="listPrice">
-                    <div>
-                        <input type="text" id="filterByPrice" placeholder="less than...." oninput="debounce(priceLessThan,1000)">
-                    </div> 
+                    <section>
+                        <!-- <div>
+                            <div>
+                                <span>Price</span>
+                            </div>
+                        </div> -->
+                        <div class="slider">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="range-input">
+                                <input type="range" class="range-min" min="0" max="3000" value="0" step="6">
+                                <input type="range" class="range-max" min="0" max="3000" value="3000" step="6">
+                        </div>
+                        <div class="priceMinMax">
+                            <div>
+                                <select>
+                                    <option value="Min" >Min</option>
+                                    <option value="250" >250</option>
+                                    <option value="500" >500</option>
+                                    <option value="1000" >1000</option>
+                                    <option value="2000" >2000</option>
+                                    <option value="3000" >3000</option>
+                                </select>
+                            </div>
+                            <div>to</div>
+                            <div>
+                                <select>
+                                    <option value="250" >250</option>
+                                    <option value="500" >500</option>
+                                    <option value="1000" >1000</option>
+                                    <option value="2000" >2000</option>
+                                    <option value="3000" >3000</option>
+                                    <option value="Max" >3000+</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
                 </div>
+            </div>
+            <div style="display: block; margin-left: 40%;">
+                <button style="padding: 5% 10%;">Apply</button>
             </div>
         </div>
         <!-- Right Part of Product Page -->
@@ -733,3 +802,4 @@
 </body>
 </html>
 <script src="/FrontEnd/JsFiles/Products.js"></script>
+<script src="https://kit.fontawesome.com/9018df668b.js" crossorigin="anonymous"></script>

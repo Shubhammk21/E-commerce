@@ -1,5 +1,6 @@
 package com.ECommerce.Services;
 
+import com.ECommerce.DTO.CategorySubDTO;
 import com.ECommerce.DTO.Gender;
 import com.ECommerce.Exception.CategoryException;
 import com.ECommerce.Exception.CustomerException;
@@ -19,20 +20,23 @@ public class CategoryServiceImply implements CategoryService {
     private CategoryRepo cr;
 
     @Override
-    public Category addCategory(Category category) throws CategoryException {
-        Optional<Category> optionalCategory= cr.findByCategoryNameAndSub(category.getCategoryName(), category.getSubCategory(),category.getCategoryType());
-        if(optionalCategory.isPresent()){
-            throw new CategoryException("§◙→ Category already present ←◙§");
-        }else{
-            category.setActive("Active");
-            return cr.save(category);
+    public List<Category> addCategory(List<Category> categories) throws CategoryException {
+        for (Category category: categories){
+            Optional<Category> optionalCategory= cr.findByCategoryNameAndSub(category.getCategoryName(), category.getSubCategory(),category.getCategoryType());
+            if(optionalCategory.isPresent()){
+                throw new CategoryException("§◙→ Category already present ←◙§");
+            }else {
+                category.setActive("Active");
+            }
         }
+        return cr.saveAll(categories);
+
 
     }
 
     @Override
-    public Set<String> findAllCategoryName(Gender cat) throws CategoryException {
-        Set<String>name= cr.findAllCategoryName(cat);
+    public List<Category> findAllCategoryName(Gender cat) throws CategoryException {
+        List<Category> name= cr.findAllCategoryName(cat);
         if (name.isEmpty()){
             throw new CategoryException("♣█☻ Check Parameters ☻█♣");
         }else {
@@ -41,8 +45,8 @@ public class CategoryServiceImply implements CategoryService {
     }
 
     @Override
-    public List<Category> findAllSubCategory(Gender cat, String catName) throws CategoryException {
-        List<Category> name= cr.findAllSubCategory(cat,catName);
+    public List<CategorySubDTO> findAllSubCategory(Gender cat, String catName) throws CategoryException {
+        List<CategorySubDTO> name= cr.findAllSubCategory(cat,catName);
         if (name.isEmpty()){
             throw new CategoryException("♣█☻ Check Parameters ☻█♣");
         }else {

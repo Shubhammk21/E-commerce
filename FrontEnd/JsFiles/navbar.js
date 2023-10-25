@@ -66,7 +66,7 @@ async function LogOut(){
             //     "Content-Type":"application/json"
             // }
         });
-        let data= await res;
+        let data= res;
         if(data !=null){
             localStorage.removeItem("token");
             localStorage.removeItem("myProfile");

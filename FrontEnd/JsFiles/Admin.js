@@ -39,7 +39,7 @@ async function CategoryOption(){
         let data= await res.json();
             //console.log(data);
         if(data!=null){
-            AddSubCat(data)
+            AddCatName(data)
             //console.log(data)
         }
             
@@ -50,16 +50,16 @@ async function CategoryOption(){
 }
 
 async function CategoryNameOption(){
-    let subCat= document.querySelector("#subCategory").value;
+    let catName= document.querySelector("#categoryName").value;
     let catType= document.querySelector("#catTypeSelecter").value;
     //console.log(subCat)
     try {
-        let res= await fetch (`http://localhost:8088/Category/list/SubCategory/${catType}/${subCat}`);// this api call the all the Category names by Category type;
+        let res= await fetch (`http://localhost:8088/Category/list/SubCategory/${catType}/${catName}`);// this api call the all the Category names by Category type;
         let data= await res.json();
            
         if(data!=null){
-            AddCatName(data)
-            console.log(data)
+            AddSubCat(data)
+            //console.log(data)
         }
             
     } catch (error) {
@@ -73,7 +73,8 @@ function AddSubCat(optionData){
     optionData.forEach(i => {
         //console.log(i);
         let op1= document.createElement("option");
-        op1.innerText=i;
+        op1.innerText=i.subCategory;
+        op1.value= i.categoryID;
 
         apendOp.append(op1);
     });
@@ -83,10 +84,9 @@ function AddCatName(optionData){
     
     let apendOp= document.querySelector("#categoryName");
     optionData.forEach(i => {
-        //console.log(i);
+        console.log(i);
         let op1= document.createElement("option");
-        op1.innerText=i.subCategory;
-        op1.value= i.categoryID;
+        op1.innerText=i.categoryName;
 
         apendOp.append(op1);
     });
@@ -114,7 +114,7 @@ form.addEventListener("submit", function(event) {
     }
        
     console.log(obj);
-    let categoryId= form.categoryName.value;
+    let categoryId= form.subCategory.value;
     console.log(categoryId)
     AddProductApi(obj,categoryId)
 

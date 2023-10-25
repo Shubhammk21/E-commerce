@@ -1,5 +1,6 @@
 package com.ECommerce.Controllers;
 
+import com.ECommerce.DTO.CategorySubDTO;
 import com.ECommerce.DTO.Gender;
 import com.ECommerce.Exception.CategoryException;
 import com.ECommerce.Exception.ProductException;
@@ -20,26 +21,26 @@ public class CategoryController {
 
     @Autowired
     public CategoryService cs;
-    @PostMapping("/Products/add/category")
-    public ResponseEntity<Category> addCategory(@Valid @RequestBody Category category) throws CategoryException {
+    @PostMapping("/Products/add/categoryList")
+    public ResponseEntity<List<Category>> addCategory(@Valid @RequestBody List<Category> categories) throws CategoryException {
 
-        Category cat= cs.addCategory(category);
+        List<Category> cat= cs.addCategory(categories);
 
-        return new ResponseEntity<Category>(cat, HttpStatus.ACCEPTED);
+        return new ResponseEntity<List<Category>>(cat, HttpStatus.ACCEPTED);
     }
     @GetMapping("/Category/list/CategoryName/{cat}")
-    public ResponseEntity<Set<String>> listOfAllCategoryName(@PathVariable Gender cat) throws CategoryException{
+    public ResponseEntity<List<Category>> listOfAllCategoryName(@PathVariable Gender cat) throws CategoryException{
 
-        Set<String> names= cs.findAllCategoryName(cat);
-
-        return new ResponseEntity<Set<String>>(names, HttpStatus.OK);
-    }
-    @GetMapping("/Category/list/SubCategory/{cat}/{catName}")
-    public ResponseEntity<List<Category>> listOfAllSubCategory(@PathVariable Gender cat, @PathVariable String catName) throws CategoryException{
-
-        List<Category> names= cs.findAllSubCategory(cat,catName);
+        List<Category> names= cs.findAllCategoryName(cat);
 
         return new ResponseEntity<List<Category>>(names, HttpStatus.OK);
+    }
+    @GetMapping("/Category/list/SubCategory/{cat}/{catName}")
+    public ResponseEntity<List<CategorySubDTO>> listOfAllSubCategory(@PathVariable Gender cat, @PathVariable String catName) throws CategoryException{
+
+        List<CategorySubDTO> names= cs.findAllSubCategory(cat,catName);
+
+        return new ResponseEntity<List<CategorySubDTO>>(names, HttpStatus.OK);
     }
 
 }

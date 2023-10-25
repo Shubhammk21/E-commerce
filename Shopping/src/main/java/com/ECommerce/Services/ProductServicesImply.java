@@ -116,5 +116,16 @@ public class ProductServicesImply implements ProductServices{
         }
     }
 
+    @Override
+    public List<Products> productsByCategory(Gender gender, String catName, String subCat) throws ProductException, CategoryException {
+
+        List<Products> productsList= pr.findProductsByCategory(gender, catName, subCat);
+        if(productsList.isEmpty()){
+            throw new ProductException("§◙→ Product Not found ←◙§");
+        }else{
+            return productsList;
+        }
+    }
+
 
 }

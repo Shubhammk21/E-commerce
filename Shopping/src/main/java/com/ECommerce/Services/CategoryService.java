@@ -1,5 +1,6 @@
 package com.ECommerce.Services;
 
+import com.ECommerce.DTO.CategorySubDTO;
 import com.ECommerce.DTO.Gender;
 import com.ECommerce.Exception.CategoryException;
 import com.ECommerce.Modules.Category;
@@ -10,7 +11,7 @@ import java.util.Set;
 
 public interface CategoryService {
 
-    public Category addCategory(Category category) throws CategoryException;
-    public Set<String> findAllCategoryName(Gender cat) throws CategoryException;
-    public List<Category> findAllSubCategory(Gender cat, String catName) throws CategoryException;
+    public List<Category> addCategory(List<Category> categories) throws CategoryException;
+    public List<Category> findAllCategoryName(Gender cat) throws CategoryException;
+    public List<CategorySubDTO> findAllSubCategory(Gender cat, String catName) throws CategoryException;
 }

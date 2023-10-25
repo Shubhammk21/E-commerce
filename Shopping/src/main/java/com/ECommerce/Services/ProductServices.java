@@ -18,6 +18,7 @@ public interface ProductServices {
     public List<Products> searchByBrand(String m) throws ProductException;
     public List<Products> searchByPriceLessThan(Double m) throws ProductException;
     public List<Products> filterProduct(Gender gender, String catType, String catName, String brand, int priceOne, int priceTwo) throws ProductException;
+    public List<Products> productsByCategory(Gender gender, String catName, String subCat)throws ProductException,CategoryException;
 
 
 }

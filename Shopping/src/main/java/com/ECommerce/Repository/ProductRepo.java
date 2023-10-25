@@ -14,18 +14,31 @@ import java.util.List;
 @Repository
 public interface ProductRepo extends JpaRepository<Products,String> {
 
-    @Query("select p from Products p where brand LIKE :m OR productName LIKE :m")
+    @Query("Select p FROM Products p where brand LIKE :m OR productName LIKE :m")
     public List<Products> topSearchProducts(@Param("m") String g);
 //    @Query("select p from Products p where productName LIKE :m ")
 //    public List<Products> search(@Param("m") String g);
-    @Query("select p from Products p where brand LIKE :m ")
+    @Query("Select p FROM Products p where brand LIKE :m ")
     public List<Products> searchByBrand(@Param("m")String g);
-    @Query("select p from Products p where sellPrice <= :m ")
+    @Query("Select p FROM Products p where sellPrice <= :m ")
     public List<Products> priceLessThen(@Param("m")Double g);
 
     public List<Products> findByCategory(Category category);
 
-    @Query("Select p from Products p inner JOIN Category c ON p.categoryId= c.categoryId where c.categoryType= :g AND c.categoryName= :cn AND c.subCategory= :sc AND p.brand= :b AND sellPrice BETWEEN :v1 AND :v2")
+    @Query("Select p " +
+            "FROM Products p INNER JOIN p.category c " +
+            "where c.categoryType= :g " +
+            "AND c.categoryName LIKE %:cn% " +
+            "AND c.subCategory LIKE %:sc% ")
+    public List<Products> findProductsByCategory(@Param("g") Gender gender, @Param("cn") String catName, @Param("sc") String subCat);
+
+    @Query("Select p " +
+            "FROM Products p INNER JOIN p.category c " +
+            "where c.categoryType LIKE %:g% " +
+            "AND c.categoryName LIKE %:cn% " +
+            "AND c.subCategory LIKE %:sc% " +
+            "AND p.brand LIKE %:b% " +
+            "AND sellPrice BETWEEN :v1 AND :v2")
     public List<Products> filterProductRepo(@Param("g") Gender gender, @Param("cn") String catName, @Param("sc") String subCat, @Param("b") String brand, @Param("v1") int priceOne, @Param("v2") int priceTwo);
    
 }

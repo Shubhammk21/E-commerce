@@ -1,5 +1,6 @@
 package com.ECommerce.Controllers;
 
+import com.ECommerce.DTO.Gender;
 import com.ECommerce.Exception.CategoryException;
 import com.ECommerce.Exception.ProductException;
 import com.ECommerce.Modules.Category;
@@ -72,6 +73,14 @@ public class ProductsController {
     public ResponseEntity<List<Products>> searchByPriceLessThan(@PathVariable Double m) throws ProductException{
 
         List<Products> productsList= ps.searchByPriceLessThan(m);
+
+        return new ResponseEntity<List<Products>>(productsList, HttpStatus.OK);
+
+    }
+    @GetMapping("/List/Category/{g}/{cn}/{sc}")
+    public ResponseEntity<List<Products>> findProductsByCategory(@PathVariable("g") Gender gender, @PathVariable("cn") String catName, @PathVariable("sc") String subCat) throws ProductException, CategoryException {
+
+        List<Products> productsList= ps.productsByCategory(gender, catName, subCat);
 
         return new ResponseEntity<List<Products>>(productsList, HttpStatus.OK);
 
