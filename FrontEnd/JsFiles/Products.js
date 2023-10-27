@@ -204,7 +204,7 @@ function display(arr){
 
         let mdiv= document.createElement("div");
         mdiv.setAttribute("class", "slideshow-container")
-        mdiv.innerHTML=`<svg id="wishList" width="28" height="28" viewBox="0 0 20 16"><path d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" fill="" opicity=".9"></path></svg>`;
+        //mdiv.innerHTML=`<svg id="wishList" width="28" height="28" viewBox="0 0 20 16"><path d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" fill="" opicity=".9"></path></svg>`;
         
         let dotDiv= document.createElement("div");
         dotDiv.setAttribute("class", "dotDiv");
@@ -219,45 +219,63 @@ function display(arr){
             dotDiv.append(dot);
         });
 
+        let brand=document.createElement("h3");
+        brand.innerText=arr[i].brand;
 
+        let name= document.createElement("p");
+        name.innerText= arr[i].productName;
 
-        let name=document.createElement("h3");
-        name.innerText=arr[i].brand;
-
-        let add=document.createElement("p");
-        add.innerText= arr[i].productName;
-
-    
         let price=document.createElement("h5");
-        price.innerText="Price: "+arr[i].sellPrice;
+        price.innerText="₹ "+arr[i].sellPrice;
 
         let marketPrice= document.createElement("h5");
-        marketPrice.innerText= arr[i].marketPrice;
+        marketPrice.innerText= "₹ "+arr[i].marketPrice;
+
+        let discountPrice= document.createElement("h5");
+        discountPrice.innerText=  Math.floor((arr[i].marketPrice- arr[i].sellPrice) /arr[i].marketPrice * 100)+"% off";
+
+        let priceDiv= document.createElement("div");
+        priceDiv.append(price, marketPrice, discountPrice);
+        priceDiv.setAttribute("class", "priceDiv")
+
+        let infoDiv= document.createElement("div");
+        infoDiv.append(name, brand, priceDiv);
+        infoDiv.setAttribute("class", "infoDiv")
 
         //mdiv.append(image)
-        div.append(mdiv,dotDiv, name,price,marketPrice,add);
+        div.append(mdiv, dotDiv, infoDiv);
         document.querySelector("#resultProducts").append(div);
 
+        let time;
         div.addEventListener("mouseenter",function(event){
             event.target.style["boxShadow"]="rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;";
 
-            let slideImg= document.querySelector(".slideshow-container>img");
-            let slideDot= document.querySelector(".sdotDiv>span");
-            let currentImg = 0; 
+            let slideImg= mdiv.childNodes;
+            let slideDot= dotDiv.childNodes;
+            let currentImg= 0; 
             let n= slideImg.length;
+            //console.log(document.querySelectorAll("slideshow-containerimg"));
+            
+            time= setInterval(function(){
+                for (let k= 0; k<n; k++){
+                    slideImg[k].style.display= "none";
+                    slideDot[k].className= slideDot[k].className.replace('active', '');
+                }
+                currentImg= (currentImg+1)% n;
+                console.log(currentImg)
+                slideImg[currentImg].style.display= "block";
+                // slideImg[currentImg].style.position= "relative";
+                slideDot[currentImg].className += ' active';
 
-            for (let k= 0; k<n; k++){
-                slideImg[k].style.opacity= 0;
-                slideDot[k].className= slideDot[k].className.replace(' active', '');
-            }
-            currentImg = (currentImg + 1) % n;
-
-            slideImg[currentImg].style.opacity = '1';
-            slideDot[currentImg].className += ' active';
+            },2000)
+           
 
         })
         div.addEventListener("mouseleave",function(event){
             event.target.style["boxShadow"]="";
+            clearInterval(time);
+            console.log("not")
+
         })
         
     }   
